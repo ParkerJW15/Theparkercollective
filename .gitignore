@@ -8,3 +8,7 @@ out/
 Thumbs.db
 .npm-cache/
 .tmp/
+
+# Keep raw video originals local; publish only the converted website clips.
+assets/originals/videos/
+.video-tools/
