@@ -38,7 +38,11 @@ export default function SmoothScroll({ children }) {
       };
       const alignHash = () => {
         const target = document.getElementById(window.location.hash.slice(1));
+        // Native fragment navigation can scroll the fixed wrapper itself.
+        // Keep document scrolling as the single source of scroll position.
+        wrapper.current.scrollTop = 0;
         if (target) smoother.scrollTo(target, false, 'top top');
+        else if (!window.location.hash) smoother.scrollTo(0, false);
       };
       content.current.addEventListener('click', handleAnchor);
       window.addEventListener('hashchange', alignHash);
@@ -68,8 +72,38 @@ export default function SmoothScroll({ children }) {
       });
     });
 
+    // Hold the section above About in place while About and its ticker
+    // travel over it, then release into ordinary page scrolling.
+    media.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
+      const stack = content.current.querySelector('[data-section-stack]');
+      const underlay = stack?.querySelector('[data-section-underlay]');
+      const cover = stack?.querySelector('[data-section-cover]');
+      if (!stack || !underlay || !cover) return;
+      ScrollTrigger.create({
+        trigger: underlay,
+        start: 'bottom bottom',
+        end: () => `+=${Math.max(window.innerHeight, cover.offsetHeight)}`,
+        pin: underlay,
+        pinType: 'transform',
+        pinSpacing: false,
+        invalidateOnRefresh: true,
+      });
+    });
+
+    media.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
+      const footer = content.current.querySelector('[data-footer-reveal]');
+      const footerContent = content.current.querySelector('[data-footer-content]');
+      if (!footer || !footerContent) return;
+      gsap.fromTo(footerContent, { yPercent: -100 }, {
+        yPercent: 0,
+        ease: 'none',
+        scrollTrigger: { trigger: footer, start: 'top bottom', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true },
+      });
+    });
+
     const initialHashFrame = requestAnimationFrame(() => {
       const target = document.getElementById(window.location.hash.slice(1));
+      if (ScrollSmoother.get()) wrapper.current.scrollTop = 0;
       if (target) ScrollSmoother.get()?.scrollTo(target, false, 'top top');
     });
     return () => { cancelAnimationFrame(initialHashFrame); media.revert(); };

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 const styles = {
-  section: 'relative isolate overflow-hidden bg-ink px-[6vw] py-[110px] text-white max-[900px]:px-6 max-[900px]:py-20',
+  section: 'relative isolate overflow-hidden rounded-b-[48px] bg-ink px-[6vw] py-[110px] text-white max-[900px]:px-6 max-[900px]:py-20 max-[760px]:rounded-b-[30px]',
   poster: 'absolute inset-0 -z-3 h-full w-full object-cover object-center',
   video: 'absolute inset-0 -z-2 h-full w-full object-cover object-center',
   overlay: 'absolute inset-0 -z-1 bg-[linear-gradient(90deg,#090c08c9,#090c088c)]',
@@ -12,7 +12,6 @@ const styles = {
   eyebrow: 'mb-[35px] text-[10px] tracking-[.16em] text-brand-accent uppercase',
   description: 'mt-7 max-w-[345px] text-base leading-[1.75] text-[#eceee5] max-[900px]:max-w-[400px]',
   email: 'mt-8 inline-flex items-center gap-4 border-b border-white/45 pb-2.5 text-[13px] wrap-anywhere max-[480px]:text-xs',
-  videoControl: 'mt-[30px] flex cursor-pointer items-center gap-2.5 py-2.5 text-[11px] text-[#eceee5] [&>span]:grid [&>span]:size-[30px] [&>span]:place-items-center [&>span]:rounded-full [&>span]:border [&>span]:border-white/50 [&>span]:text-sm',
   form: 'border border-white/40 bg-[#f2f1ebf5] p-[clamp(26px,3.3vw,48px)] text-ink max-[900px]:p-8 max-[480px]:p-[26px]',
   formHeading: 'text-[30px] leading-[1.1] font-bold tracking-[-.04em]',
   requiredNote: 'mt-3 text-[11px] text-[#5a6050]',
@@ -26,8 +25,6 @@ const styles = {
 export default function Inquiry() {
   const section = useRef(null);
   const video = useRef(null);
-  const manuallyPaused = useRef(false);
-  const [playing, setPlaying] = useState(false);
   const [videoFailed, setVideoFailed] = useState(false);
   const [draftOpened, setDraftOpened] = useState(false);
 
@@ -36,7 +33,7 @@ export default function Inquiry() {
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const motionChange = () => { if (reducedMotion.matches) player.pause(); };
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !reducedMotion.matches && !manuallyPaused.current) {
+      if (entry.isIntersecting && !reducedMotion.matches) {
         if (!player.getAttribute('src')) player.src = '/videos/laptop-video-editing-web.mp4';
         player.play().catch(() => {});
       } else player.pause();
@@ -45,15 +42,6 @@ export default function Inquiry() {
     reducedMotion.addEventListener('change', motionChange);
     return () => { observer.disconnect(); reducedMotion.removeEventListener('change', motionChange); player.pause(); };
   }, []);
-
-  function toggleVideo() {
-    if (playing) { manuallyPaused.current = true; video.current.pause(); }
-    else {
-      manuallyPaused.current = false;
-      if (!video.current.getAttribute('src')) video.current.src = '/videos/laptop-video-editing-web.mp4';
-      video.current.play().catch(() => {});
-    }
-  }
 
   function openEmailDraft(event) {
     event.preventDefault();
@@ -73,15 +61,14 @@ export default function Inquiry() {
   return (
     <section ref={section} id="inquiry" className={styles.section} aria-labelledby="inquiry-title">
       <Image src="/images/backgrounds/inquiry-poster.jpg" alt="" fill sizes="100vw" className={styles.poster} />
-      <video ref={video} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} className={styles.video} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onError={() => setVideoFailed(true)} />
+      <video ref={video} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} className={styles.video} onError={() => setVideoFailed(true)} />
       <div className={styles.overlay} />
       <div className={styles.inner}>
         <div className={styles.intro}>
-          <p className={styles.eyebrow}>06 / Your next chapter</p>
+          <p className={styles.eyebrow}>07 / Your next chapter</p>
           <h2 id="inquiry-title">Good things<br />start with<br /><span>a hello.</span></h2>
           <p className={styles.description}>Tell me a little about your business, your big ideas, and where you’d like to go. Let’s find your kind of social.</p>
           <a className={styles.email} href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com <span aria-hidden="true">↗</span></a>
-          {!videoFailed && <button type="button" className={styles.videoControl} onClick={toggleVideo} aria-label={playing ? 'Pause background video' : 'Play background video'}><span aria-hidden="true">{playing ? 'Ⅱ' : '▷'}</span>{playing ? 'Pause video' : 'Play video'}</button>}
         </div>
         <form className={styles.form} onSubmit={openEmailDraft}>
           <p className={styles.formHeading}>Let’s work together.</p>

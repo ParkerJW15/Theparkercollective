@@ -49,7 +49,7 @@ export default function Faq() {
     <section id="faq" className={styles.section} aria-labelledby="faq-title">
       <div className={styles.inner}>
         <div className={styles.introduction}>
-          <p className={styles.eyebrow}><span aria-hidden="true">05 /</span> The details</p>
+          <p className={styles.eyebrow}><span aria-hidden="true">06 /</span> The details</p>
           <h2 id="faq-title" className={styles.title}>You ask.<br /><span>I answer.</span></h2>
           <p className={styles.description}>A few things you might be wondering<br className={styles.desktopBreak} /> about working together.</p>
           <div className={styles.contact}>

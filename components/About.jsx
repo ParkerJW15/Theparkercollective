@@ -57,7 +57,7 @@ export default function About() {
         </figure>
 
         <div>
-          <p className={styles.eyebrow}><span aria-hidden="true">01 /</span> Behind the collective</p>
+          <p className={styles.eyebrow}><span aria-hidden="true">05 /</span> Behind the collective</p>
           <h2 id="about-title" className={styles.title}>Hey, I’m<br /><span>Parker.</span></h2>
           <p className={styles.intro}>A creative mind.<br />A strategic side. Your brand’s next chapter.</p>
           <div className={styles.body}>

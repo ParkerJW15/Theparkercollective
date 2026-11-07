@@ -19,13 +19,13 @@ const clips = [
   { file: 'jawline-injection-treatment', title: 'The process', description: 'Behind the treatment' },
 ];
 
-function PortfolioVideo({ clip, paused }) {
+function PortfolioVideo({ clip }) {
   const video = useRef(null);
   useEffect(() => {
     const player = video.current;
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !paused && !motion.matches) {
+      if (entry.isIntersecting && !motion.matches) {
         if (!player.getAttribute('src')) player.src = `/videos/portfolio/${clip.file}.mp4`;
         player.play().catch(() => {});
       } else player.pause();
@@ -34,19 +34,12 @@ function PortfolioVideo({ clip, paused }) {
     observer.observe(player);
     motion.addEventListener('change', stopForMotion);
     return () => { observer.disconnect(); motion.removeEventListener('change', stopForMotion); player.pause(); };
-  }, [clip.file, paused]);
-
-  function loadForManualPlay() {
-    if (!video.current.getAttribute('src')) {
-      video.current.src = `/videos/portfolio/${clip.file}.mp4`;
-      video.current.play().catch(() => {});
-    }
-  }
+  }, [clip.file]);
 
   return (
     <figure className={styles.clip}>
       <div className={styles.videoFrame}>
-        <video ref={video} muted loop playsInline controls preload="none" poster={`/images/portfolio/${clip.file}.jpg`} aria-label={clip.description} onPointerDown={loadForManualPlay} onKeyDown={event => { if (event.key === 'Enter' || event.key === ' ') loadForManualPlay(); }} />
+        <video ref={video} muted loop playsInline preload="none" poster={`/images/portfolio/${clip.file}.jpg`} aria-label={clip.description} />
       </div>
       <figcaption><span>{clip.title}</span><span>{clip.description}</span></figcaption>
     </figure>
@@ -54,17 +47,15 @@ function PortfolioVideo({ clip, paused }) {
 }
 
 export default function Portfolio() {
-  const [paused, setPaused] = useState(false);
   return (
     <section id="work" className={styles.section} aria-labelledby="work-title">
       <div className={styles.inner}>
         <p className={styles.eyebrow}>03 / In the frame</p>
         <h2 id="work-title">Real moments.<br /><span>Made to connect.</span></h2>
         <p className={styles.description}>A glimpse of the content behind the brands.</p>
-        <div className={styles.grid}>{clips.map(clip => <PortfolioVideo key={clip.file} clip={clip} paused={paused} />)}</div>
+        <div className={styles.grid}>{clips.map(clip => <PortfolioVideo key={clip.file} clip={clip} />)}</div>
         <div className={styles.footer}>
           <a href="#inquiry">Let’s create yours <span aria-hidden="true">↗</span></a>
-          <button type="button" onClick={() => setPaused(current => !current)} aria-pressed={paused}>{paused ? 'Resume videos' : 'Pause all videos'} <span aria-hidden="true">{paused ? '▷' : 'Ⅱ'}</span></button>
         </div>
       </div>
     </section>
