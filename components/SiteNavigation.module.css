@@ -1,0 +1,142 @@
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 44px;
+  min-height: 44px;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.triggerLabel { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.bars { display: grid; gap: 7px; width: 24px; }
+.bars span { display: block; width: 24px; height: 1px; background: currentColor; }
+.trigger:hover { color: var(--color-brand-accent); }
+
+.dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  color: var(--color-ink);
+}
+.dialog::backdrop { background: rgb(0 0 0 / .35); }
+.panel {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 80vh;
+  height: 80dvh;
+  padding: 24px var(--page-gutter);
+  --menu-ease: cubic-bezier(.22, 1, .36, 1);
+  background: var(--color-paper);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  box-shadow: 0 10px 30px rgb(0 0 0 / .12);
+}
+.dialog[open] .panel { animation: menu-arrive .36s var(--menu-ease) both; }
+.header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 24px; flex-shrink: 0; }
+.brand { font-family: var(--font-sans); font-size: 26px; font-weight: 800; line-height: .86; letter-spacing: -.065em; text-decoration: none; }
+.brand > span { display: block; }
+.brandMark { font-size: 19px; color: var(--color-olive); margin-left: 3px; }
+.actions { display: flex; align-items: center; gap: 24px; }
+.inquire { display: flex; gap: 20px; align-items: center; padding: 12px 20px; background: var(--color-brand-accent); color: var(--color-ink); font-size: 11px; font-weight: 700; text-transform: uppercase; text-decoration: none; }
+.close { display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: none; color: var(--color-ink); cursor: pointer; }
+.links { display: grid; grid-template-rows: repeat(4, 1fr); flex: 1; min-height: 176px; border-top: 1px solid #191b1733; }
+.link { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 20px; min-height: 44px; padding: 12px 8px; border-bottom: 1px solid #191b1733; color: var(--color-olive); text-decoration: none; transition: background-color .2s, color .2s; }
+.number { font-size: 11px; align-self: center; }
+.label { text-align: center; font-family: var(--font-sans); font-size: clamp(30px, 5vw, 66px); font-weight: 400; letter-spacing: -.045em; line-height: 1.1; }
+.arrow { justify-self: end; font-size: 34px; font-weight: 400; line-height: 1; transition: transform .2s; }
+.link:hover { background: var(--color-brand-accent); color: var(--color-ink); }
+.link:hover .arrow { transform: translateX(4px); }
+.panel :focus-visible { outline: 2px solid var(--color-olive); outline-offset: 3px; }
+@keyframes menu-arrive { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@media (max-width: 640px) {
+  .triggerLabel { display: none; }
+  .panel { padding: 20px 24px; }
+  .header { gap: 14px; padding-bottom: 20px; }
+  .brand { font-size: 23px; }
+  .actions { gap: 12px; }
+  .inquire { padding: 12px; font-size: 10px; gap: 10px; }
+  .link { grid-template-columns: 26px minmax(0, 1fr) 26px; gap: 12px; }
+  .label { font-size: clamp(30px, 8vw, 44px); }
+  .arrow { font-size: 28px; }
+}
+@media (max-height: 500px) { .panel { padding-block: 12px; } .header { padding-bottom: 12px; } .label { font-size: 30px; } }
+@media (prefers-reduced-motion: reduce) { .dialog[open] .panel { animation: none; } .link, .arrow { transition: none; } }
+
+/* Each part enters in order; transform/opacity keep the animation lightweight. */
+.dialog[open] .brand,
+.dialog[open] .actions { animation: part-arrive .4s var(--menu-ease) 60ms both; }
+.dialog[open] .number,
+.dialog[open] .label,
+.dialog[open] .arrow { animation: part-arrive .42s var(--menu-ease) var(--row-delay) both; }
+.trigger, .brand, .inquire, .close { transition: color .2s, background-color .2s, opacity .2s, transform .25s; }
+.bars span { transition: transform .25s; }
+.trigger:hover .bars span:first-child { transform: translateX(-3px); }
+.trigger:hover .bars span:last-child { transform: translateX(3px); }
+.brand:hover { opacity: .7; }
+.inquire:hover { transform: translateY(-2px); }
+.close:hover { transform: rotate(90deg); }
+.label { transition: letter-spacing .25s; }
+.link:hover .label { letter-spacing: -.025em; }
+@keyframes part-arrive { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .dialog[open] .brand, .dialog[open] .actions, .dialog[open] .number,
+  .dialog[open] .label, .dialog[open] .arrow { animation: none; }
+  .trigger, .brand, .inquire, .close, .bars span, .label { transition: none; }
+}
+
+.triggerSpace { display: block; width: 100px; height: 44px; }
+.fixedTrigger {
+  position: fixed;
+  top: 36px;
+  right: var(--page-gutter);
+  z-index: 60;
+  min-width: 100px;
+  padding-inline: 12px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+@media (max-width: 900px) { .fixedTrigger { top: 30px; } }
+@media (max-width: 640px) {
+  .triggerSpace { width: 44px; }
+  .fixedTrigger { top: 27px; min-width: 44px; padding-inline: 10px; }
+}
+
+.close { position: relative; }
+.close > span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 2px;
+  background: currentColor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.close > span:last-child { transform: translate(-50%, -50%) rotate(-45deg); }
+.dialog[data-closing="true"] .panel { animation: menu-leave .24s ease-in both; }
+.dialog[data-closing="true"] .brand,
+.dialog[data-closing="true"] .actions,
+.dialog[data-closing="true"] .number,
+.dialog[data-closing="true"] .label,
+.dialog[data-closing="true"] .arrow { animation: part-leave .18s ease-in both; }
+.dialog[data-closing="true"]::backdrop { animation: backdrop-leave .24s ease-in both; }
+@keyframes menu-leave { to { transform: translateY(-24px); opacity: 0; } }
+@keyframes part-leave { to { translate: 0 -8px; opacity: 0; } }
+@keyframes backdrop-leave { to { background: rgb(0 0 0 / 0); } }
+@media (prefers-reduced-motion: reduce) {
+  .dialog[data-closing="true"] .panel, .dialog[data-closing="true"]::backdrop,
+  .dialog[data-closing="true"] .brand, .dialog[data-closing="true"] .actions,
+  .dialog[data-closing="true"] .number, .dialog[data-closing="true"] .label,
+  .dialog[data-closing="true"] .arrow { animation: none; }
+}

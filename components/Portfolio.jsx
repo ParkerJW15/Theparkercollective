@@ -2,14 +2,14 @@
 
 import { useEffect, useRef, useState } from 'react';
 const styles = {
-  section: 'bg-white px-[6vw] pt-[100px] pb-20 text-ink [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-[5px] [&_:focus-visible]:outline-ink max-[900px]:px-6 max-[900px]:pt-20 max-[900px]:pb-16 max-[480px]:pt-16',
+  section: 'section-space bg-white text-ink [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-[5px] [&_:focus-visible]:outline-ink',
   inner: 'mx-auto max-w-[1180px] [&_h2]:text-center [&_h2]:text-[clamp(44px,5.2vw,76px)] [&_h2]:leading-[.99] [&_h2]:font-bold [&_h2]:tracking-[-.065em] [&_h2]:uppercase [&_h2_span]:font-editorial [&_h2_span]:font-normal [&_h2_span]:tracking-[-.055em] [&_h2_span]:normal-case [&_h2_span]:italic max-[480px]:[&_h2]:text-[43px]',
   eyebrow: 'mb-[25px] text-center text-[10px] font-semibold tracking-[.17em] uppercase',
-  description: 'mt-[23px] text-center text-[15px] leading-[1.6]',
-  grid: 'mt-12 grid grid-cols-4 gap-5 max-[900px]:grid-cols-2 max-[900px]:gap-x-[18px] max-[900px]:gap-y-[30px] max-[480px]:mt-8 max-[480px]:gap-x-3 max-[480px]:gap-y-7',
-  clip: 'm-0 min-w-0 [&_figcaption]:mt-4 [&_figcaption]:flex [&_figcaption]:flex-col [&_figcaption]:gap-1.5 [&_figcaption>span:first-child]:text-xs [&_figcaption>span:first-child]:font-bold [&_figcaption>span:first-child]:tracking-[.05em] [&_figcaption>span:first-child]:uppercase [&_figcaption>span:last-child]:text-[11px] [&_figcaption>span:last-child]:text-olive max-[480px]:[&_figcaption>span]:text-[10px] max-[480px]:[&_figcaption>span:last-child]:leading-[1.5]',
+  description: 'mx-auto mt-6 max-w-[560px] text-center text-[15px] leading-[1.6]',
+  grid: 'mt-16 grid grid-cols-4 items-start gap-5 max-[900px]:grid-cols-2 max-[900px]:gap-x-[18px] max-[900px]:gap-y-[30px] max-[480px]:mt-12 max-[480px]:gap-x-3 max-[480px]:gap-y-7',
+  clip: 'm-0 min-w-0 even:mt-20 max-[900px]:even:mt-10 [&_figcaption]:mt-4 [&_figcaption]:flex [&_figcaption]:flex-col [&_figcaption]:gap-1.5 [&_figcaption>span:first-child]:text-xs [&_figcaption>span:first-child]:font-bold [&_figcaption>span:first-child]:tracking-[.05em] [&_figcaption>span:first-child]:uppercase [&_figcaption>span:last-child]:text-[11px] [&_figcaption>span:last-child]:text-olive max-[480px]:[&_figcaption>span]:text-[10px] max-[480px]:[&_figcaption>span:last-child]:leading-[1.5]',
   videoFrame: 'aspect-[3/4] overflow-hidden bg-[#30372a] [&_video]:block [&_video]:h-full [&_video]:w-full [&_video]:object-cover max-[480px]:aspect-[9/16]',
-  footer: 'mt-10 flex flex-wrap items-center justify-center gap-[26px] max-[480px]:gap-4 [&_a]:inline-flex [&_a]:min-h-[54px] [&_a]:items-center [&_a]:justify-between [&_a]:gap-[38px] [&_a]:bg-ink [&_a]:px-6 [&_a]:py-[18px] [&_a]:text-[11px] [&_a]:font-semibold [&_a]:tracking-[.04em] [&_a]:text-white [&_a]:uppercase [&_a_span]:text-[22px] [&_a_span]:leading-none [&_button]:inline-flex [&_button]:min-h-11 [&_button]:cursor-pointer [&_button]:items-center [&_button]:gap-3 [&_button]:border-b [&_button]:border-ink/35 [&_button]:text-[11px]',
+  footer: 'mt-12 flex flex-wrap items-center justify-center gap-[26px] max-[480px]:gap-4 [&_a]:inline-flex [&_a]:min-h-[54px] [&_a]:items-center [&_a]:justify-between [&_a]:gap-[38px] [&_a]:bg-ink [&_a]:px-6 [&_a]:py-[18px] [&_a]:text-[11px] [&_a]:font-semibold [&_a]:tracking-[.04em] [&_a]:text-white [&_a]:uppercase [&_a_span]:text-[22px] [&_a_span]:leading-none [&_button]:inline-flex [&_button]:min-h-11 [&_button]:cursor-pointer [&_button]:items-center [&_button]:gap-3 [&_button]:border-b [&_button]:border-ink/35 [&_button]:text-[11px]',
 };
 
 const clips = [
@@ -51,11 +51,11 @@ export default function Portfolio() {
     <section id="work" className={styles.section} aria-labelledby="work-title">
       <div className={styles.inner}>
         <p className={styles.eyebrow}>03 / In the frame</p>
-        <h2 id="work-title">Real moments.<br /><span>Made to connect.</span></h2>
-        <p className={styles.description}>A glimpse of the content behind the brands.</p>
+        <h2 id="work-title">Your business,<br /><span>seen up close.</span></h2>
+        <p className={styles.description}>From the first conversation to the details of a treatment, here’s how I bring a business’s everyday work into the frame.</p>
         <div className={styles.grid}>{clips.map(clip => <PortfolioVideo key={clip.file} clip={clip} />)}</div>
         <div className={styles.footer}>
-          <a href="#inquiry">Let’s create yours <span aria-hidden="true">↗</span></a>
+          <a href="#inquiry">Plan your content with me <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>

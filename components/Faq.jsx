@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 const styles = {
-  section: 'paper-grain bg-paper px-[6vw] pb-[120px] text-ink max-[1000px]:px-[5vw] max-[1000px]:pb-[90px] max-[760px]:px-6 max-[760px]:pb-[72px]',
-  inner: 'mx-auto grid max-w-[1180px] grid-cols-[minmax(0,.8fr)_minmax(0,1.35fr)] items-start gap-[clamp(48px,7vw,108px)] border-t border-[#cccec3] pt-[100px] max-[1000px]:gap-10 max-[1000px]:pt-20 max-[760px]:max-w-[520px] max-[760px]:grid-cols-1 max-[760px]:gap-[38px] max-[760px]:pt-16',
-  eyebrow: 'mb-[30px] flex items-center gap-[18px] text-[10px] font-semibold tracking-[.18em] text-olive uppercase [&>span]:text-[#686c5f] max-[760px]:mb-6 max-[760px]:text-[9px]',
+  section: 'section-inset section-bottom paper-grain bg-paper text-ink',
+  inner: 'mx-auto grid max-w-[1180px] grid-cols-[minmax(0,.8fr)_minmax(0,1.35fr)] items-start gap-[clamp(48px,7vw,108px)] border-t border-[#cccec3] pt-[var(--section-space)] max-[1000px]:gap-10 max-[760px]:max-w-[520px] max-[760px]:grid-cols-1 max-[760px]:gap-[38px]',
+  eyebrow: 'mb-6 flex items-center gap-[18px] text-[10px] font-semibold tracking-[.18em] text-olive uppercase [&>span]:text-[#686c5f] max-[760px]:mb-6 max-[760px]:text-[9px]',
   title: 'm-0 text-[clamp(46px,4.6vw,66px)] leading-[.98] font-bold tracking-[-.065em] uppercase [&>span]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[46px] max-[760px]:text-[clamp(48px,12vw,62px)]',
   description: 'mt-[26px] text-[15px] leading-[1.7] text-muted max-[760px]:mt-[22px] max-[760px]:max-w-[290px]',
   desktopBreak: 'max-[1000px]:hidden',
-  contact: 'mt-[50px] max-[760px]:mt-[25px] [&_p]:mb-3 [&_p]:text-xs [&_p]:text-[#686c5f] [&_a]:inline-flex [&_a]:min-h-10 [&_a]:items-center [&_a]:justify-between [&_a]:gap-10 [&_a]:border-b [&_a]:border-ink [&_a]:pb-2 [&_a]:text-[13px] [&_a]:font-semibold [&_a:hover]:border-[#657438] [&_a:hover]:text-olive [&_a:focus-visible]:outline-olive',
+  contact: 'mt-8 max-[760px]:mt-[25px] [&_p]:mb-3 [&_p]:text-xs [&_p]:text-[#686c5f] [&_a]:inline-flex [&_a]:min-h-10 [&_a]:items-center [&_a]:justify-between [&_a]:gap-10 [&_a]:border-b [&_a]:border-ink [&_a]:pb-2 [&_a]:text-[13px] [&_a]:font-semibold [&_a:hover]:border-[#657438] [&_a:hover]:text-olive [&_a:focus-visible]:outline-olive',
   questions: 'border-t border-[#aeb2a4]',
   item: 'group/faq border-b border-[#cccec3]',
   question: 'grid min-h-[91px] w-full cursor-pointer grid-cols-[24px_minmax(0,1fr)_32px] items-center gap-x-[18px] py-[23px] text-left text-lg leading-[1.4] font-medium tracking-[-.025em] text-inherit focus-visible:outline-2 focus-visible:outline-offset-[5px] focus-visible:outline-olive aria-expanded:font-semibold max-[1000px]:gap-x-3 max-[1000px]:text-base max-[760px]:min-h-[86px] max-[760px]:grid-cols-[20px_minmax(0,1fr)_30px] max-[760px]:gap-2.5 max-[760px]:py-[22px]',
@@ -50,8 +50,8 @@ export default function Faq() {
       <div className={styles.inner}>
         <div className={styles.introduction}>
           <p className={styles.eyebrow}><span aria-hidden="true">06 /</span> The details</p>
-          <h2 id="faq-title" className={styles.title}>You ask.<br /><span>I answer.</span></h2>
-          <p className={styles.description}>A few things you might be wondering<br className={styles.desktopBreak} /> about working together.</p>
+          <h2 id="faq-title" className={styles.title}>Before we<br /><span>get started.</span></h2>
+          <p className={styles.description}>A little more about the process,<br className={styles.desktopBreak} /> the packages, and working with me.</p>
           <div className={styles.contact}>
             <p>Something else on your mind?</p>
             <a href="mailto:theparkercollective.co@gmail.com">

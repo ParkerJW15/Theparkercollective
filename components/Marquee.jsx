@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
+
 
 export default function Marquee() {
   // const [paused, setPaused] = useState(false);
 
   return (
     <div className="group/marquee relative overflow-hidden bg-ink py-[18px] text-brand-accent">
-      <p className="sr-only">Your brand. Your story. Your people.</p>
+      <p className="sr-only">A plan for your socials. Space for your business.</p>
       <div
         className="flex w-max motion-safe:animate-[ticker_36s_linear_infinite] group-hover/marquee:[animation-play-state:paused] group-focus-within/marquee:[animation-play-state:paused] group-data-[paused=true]/marquee:[animation-play-state:paused]"
         aria-hidden="true"
@@ -22,7 +22,7 @@ export default function Marquee() {
                 key={item}
                 className="flex shrink-0 items-center gap-12 pr-12 text-xs leading-none font-bold tracking-[.09em] whitespace-nowrap uppercase sm:text-sm"
               >
-                Everything Your Brand Needs to Show Up, Stand Out, and Sell
+                A plan for your socials. Space for your business.
                 <span className="text-xl leading-none" aria-hidden="true">
                   ✳
                 </span>

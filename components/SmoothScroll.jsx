@@ -79,6 +79,15 @@ export default function SmoothScroll({ children }) {
       const underlay = stack?.querySelector('[data-section-underlay]');
       const cover = stack?.querySelector('[data-section-cover]');
       if (!stack || !underlay || !cover) return;
+      // Pause the pinned background once About covers it completely. Keep the
+      // existing transition, but do not decode an invisible video underneath it.
+      const updateMediaCover = () => {
+        const bounds = cover.getBoundingClientRect();
+        const covered = bounds.top <= 0 && bounds.bottom >= window.innerHeight;
+        if (covered !== underlay.hasAttribute('data-media-covered')) {
+          underlay.toggleAttribute('data-media-covered', covered);
+        }
+      };
       ScrollTrigger.create({
         trigger: underlay,
         start: 'bottom bottom',
@@ -87,7 +96,11 @@ export default function SmoothScroll({ children }) {
         pinType: 'transform',
         pinSpacing: false,
         invalidateOnRefresh: true,
+        onUpdate: updateMediaCover,
+        onRefresh: updateMediaCover,
       });
+      updateMediaCover();
+      return () => underlay.removeAttribute('data-media-covered');
     });
 
     media.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {

@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+import BackgroundVideo from './BackgroundVideo';
 const styles = {
-  section: 'relative isolate overflow-hidden px-[6vw] pt-[100px] pb-20 text-brand-accent max-[760px]:px-6 max-[760px]:pt-[72px] max-[760px]:pb-14',
+  section: 'section-space relative isolate overflow-hidden text-brand-accent',
   background: 'absolute inset-0 -z-2 size-full object-cover object-[center_55%]',
   shade: 'absolute inset-0 -z-1 bg-[#090c08a6]',
-  inner: 'mx-auto max-w-[1100px] text-center [&_h2]:text-[clamp(44px,5.5vw,78px)] [&_h2]:leading-[1.05] [&_h2]:font-bold [&_h2]:tracking-[-.055em] [&_h2_em]:font-editorial [&_h2_em]:font-normal max-[760px]:[&_h2]:text-[46px]',
+  inner: 'mx-auto max-w-[1180px] text-center [&_h2]:text-[clamp(44px,5.5vw,78px)] [&_h2]:leading-[1.05] [&_h2]:font-bold [&_h2]:tracking-[-.055em] [&_h2_em]:font-editorial [&_h2_em]:font-normal max-[760px]:[&_h2]:text-[46px]',
   eyebrow: 'mb-[25px] text-[10px] tracking-[.18em] uppercase',
-  carousel: 'mt-[46px] grid grid-cols-[48px_minmax(0,720px)_48px] items-center justify-center gap-[42px] max-[760px]:mt-8 max-[760px]:grid-cols-2 max-[760px]:gap-[22px]',
+  carousel: 'mt-12 grid grid-cols-[48px_minmax(0,720px)_48px] items-center justify-center gap-[42px] max-[760px]:mt-10 max-[760px]:grid-cols-2 max-[760px]:gap-[22px]',
   arrow: 'h-[46px] w-[46px] cursor-pointer rounded-full bg-brand-accent text-[23px] text-ink transition-[transform,background] duration-200 hover:scale-[1.08] hover:bg-white motion-reduce:transition-none max-[760px]:justify-self-end max-[760px]:last:justify-self-start',
   frame: 'rounded-3xl bg-olive bg-[conic-gradient(#e8ff8c_25%,transparent_0_50%,#e8ff8c_0_75%,transparent_0)] bg-size-[68px_68px] p-3.5 max-[760px]:col-span-full max-[760px]:row-start-1 max-[760px]:rounded-[19px] max-[760px]:bg-size-[48px_48px] max-[760px]:p-2.5',
   card: 'flex min-h-[340px] items-center rounded-[14px] bg-paper px-12 pt-[38px] pb-[42px] text-left text-ink [&_blockquote]:text-[clamp(18px,1.8vw,24px)] [&_blockquote]:leading-[1.55] [&_blockquote]:tracking-[-.025em] max-[760px]:min-h-[375px] max-[760px]:rounded-[10px] max-[760px]:px-[25px] max-[760px]:py-[30px] max-[760px]:[&_blockquote]:text-lg',
@@ -33,20 +34,15 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className={styles.section} aria-labelledby="testimonials-title" aria-roledescription="carousel">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        poster="/images/portraits/shot6.jpeg"
+      <BackgroundVideo
+        src="/videos/b-roll/sunlit-studio-window-web.mp4"
+        poster="/images/portraits/shot6-web.webp"
         className={styles.background}
-      >
-        <source src="/videos/b-roll/sunlit-studio-window.mp4" type="video/mp4" />
-      </video>
+      />
       <div className={styles.shade} />
       <div className={styles.inner}>
-        <p className={styles.eyebrow}>04 / A few kind words</p>
-        <h2 id="testimonials-title">Some client <em>love.</em></h2>
+        <p className={styles.eyebrow}>04 / Client feedback</p>
+        <h2 id="testimonials-title">What it’s like to<br /><em>work together.</em></h2>
         <div className={styles.carousel}>
           <button type="button" className={styles.arrow} onClick={() => change(-1)} aria-label="Previous testimonial" aria-controls="testimonial-quote">←</button>
           <div className={styles.frame}>
