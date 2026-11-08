@@ -15,7 +15,7 @@ function ScallopedCard() {
 
 export default function ConversionSection() {
   return (
-    <section id="why-parker" aria-labelledby="why-parker-title" className="paper-grain bg-paper px-6 pt-24 pb-[110px] text-ink sm:px-[6vw] max-[760px]:py-[72px]">
+    <section id="why-parker" aria-labelledby="why-parker-title" className="paper-grain bg-white px-6 pt-24 pb-[110px] text-ink sm:px-[6vw] max-[760px]:py-[72px]">
       <div className="mx-auto max-w-[1180px]">
         <div className="mx-auto max-w-[1000px] text-center">
           <p className="mb-6 text-[10px] font-semibold tracking-[.18em] text-olive uppercase">01 / Sound familiar?</p>

@@ -34,7 +34,7 @@ export default function Inquiry() {
     const motionChange = () => { if (reducedMotion.matches) player.pause(); };
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !reducedMotion.matches) {
-        if (!player.getAttribute('src')) player.src = '/videos/laptop-video-editing-web.mp4';
+        if (!player.getAttribute('src')) player.src = '/videos/b-roll/interior-pendant-light.mp4';
         player.play().catch(() => {});
       } else player.pause();
     }, { rootMargin: '100px' });

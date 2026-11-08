@@ -55,7 +55,7 @@ export default function Hero() {
             tabIndex={-1}
             className="h-full w-full object-cover object-[center_45%] motion-safe:animate-[photo-arrive_1.8s_cubic-bezier(.2,.7,.2,1)_both] max-[640px]:object-[center_42%]"
           >
-            <source src="/videos/camera-filming.mp4" type="video/mp4" />
+            <source src="/videos/b-roll/stone-building-facade.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(0,0,0,.8),transparent_42%,transparent_75%,rgba(0,0,0,.35)),linear-gradient(90deg,rgba(9,9,9,.68),rgba(9,9,9,.45)_45%,rgba(9,9,9,.12)_72%)] max-[900px]:bg-[linear-gradient(90deg,rgba(9,9,9,.65),rgba(9,9,9,.45)_48%,rgba(9,9,9,.15)),linear-gradient(0deg,rgba(0,0,0,.85),transparent_65%)] max-[640px]:bg-[linear-gradient(0deg,#090909_30%,rgba(9,9,9,.9)_42%,rgba(9,9,9,.38)_72%,rgba(9,9,9,.2)),linear-gradient(90deg,rgba(9,9,9,.15),transparent_75%)]" />
@@ -98,13 +98,13 @@ export default function Hero() {
 
         <div className="relative flex-1 px-[4.6vw] pt-[42px] pb-[38px] text-center min-[1700px]:pt-[7vh] max-[900px]:px-[5vw] max-[900px]:pt-[65px] max-[900px]:pb-[35px] max-[640px]:px-6 max-[640px]:pt-[125px] max-[640px]:pb-8">
           <p className="flex items-center justify-center gap-3 text-[10px] font-medium uppercase tracking-[0.2em] text-white motion-safe:animate-[fade-arrive_1s_ease_both] max-[640px]:text-[8px] max-[640px]:tracking-[.13em]">
-            <span
+            {/* <span
               className="h-1.5 w-1.5 rounded-full bg-brand-accent"
               aria-hidden="true"
-            />
-            <span className="bg-brand-accent px-2 py-0.5 text-brand-black">
-              Social media. A little more personal.
-            </span>
+            /> */}
+            {/* <span className="bg-brand-accent p-2 text-brand-black">
+              Social media. A little more personal
+            </span> */}
           </p>
 
           <h1
@@ -141,9 +141,9 @@ export default function Hero() {
         </div>
 
         <div className="flex items-end justify-between gap-6 px-[4.6vw] pt-5 pb-[30px] motion-safe:animate-[fade-arrive_1s_ease_both] motion-safe:[animation-delay:.65s] max-[900px]:px-[5vw] max-[640px]:px-6 max-[640px]:pt-2.5 max-[640px]:pb-6">
-          <p className="text-[9px] uppercase tracking-[0.18em] text-white max-[640px]:max-w-[130px] max-[640px]:text-[8px] max-[640px]:leading-[1.7]">
+          {/* <p className="text-[9px] uppercase tracking-[0.18em] text-white max-[640px]:max-w-[130px] max-[640px]:text-[8px] max-[640px]:leading-[1.7]">
             Built on creativity. Backed by strategy.
-          </p>
+          </p> */}
           <div className="flex items-center gap-3 max-[640px]:gap-2">
             <span
               className="h-px w-8 bg-brand-accent max-[640px]:w-4"

@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 const styles = {
   section: 'relative isolate overflow-hidden px-[6vw] pt-[100px] pb-20 text-brand-accent max-[760px]:px-6 max-[760px]:pt-[72px] max-[760px]:pb-14',
-  background: '-z-2 object-cover object-[center_55%]',
+  background: 'absolute inset-0 -z-2 size-full object-cover object-[center_55%]',
   shade: 'absolute inset-0 -z-1 bg-[#090c08a6]',
   inner: 'mx-auto max-w-[1100px] text-center [&_h2]:text-[clamp(44px,5.5vw,78px)] [&_h2]:leading-[1.05] [&_h2]:font-bold [&_h2]:tracking-[-.055em] [&_h2_em]:font-editorial [&_h2_em]:font-normal max-[760px]:[&_h2]:text-[46px]',
   eyebrow: 'mb-[25px] text-[10px] tracking-[.18em] uppercase',
@@ -34,7 +33,16 @@ export default function Testimonials() {
 
   return (
     <section id="testimonials" className={styles.section} aria-labelledby="testimonials-title" aria-roledescription="carousel">
-      <Image src="/images/portraits/shot6.jpeg" alt="" fill sizes="100vw" className={styles.background} />
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/portraits/shot6.jpeg"
+        className={styles.background}
+      >
+        <source src="/videos/b-roll/sunlit-studio-window.mp4" type="video/mp4" />
+      </video>
       <div className={styles.shade} />
       <div className={styles.inner}>
         <p className={styles.eyebrow}>04 / A few kind words</p>

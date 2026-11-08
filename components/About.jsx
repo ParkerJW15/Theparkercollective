@@ -1,6 +1,6 @@
 import Image from 'next/image';
 const styles = {
-  about: 'paper-grain overflow-hidden bg-paper px-[6vw] pt-[116px] pb-[124px] text-ink max-[1000px]:px-[5vw] max-[1000px]:py-[90px] max-[760px]:px-6 max-[760px]:pt-[72px] max-[760px]:pb-20',
+  about: 'paper-grain overflow-hidden bg-white px-[6vw] pt-[116px] pb-[124px] text-ink max-[1000px]:px-[5vw] max-[1000px]:py-[90px] max-[760px]:px-6 max-[760px]:pt-[72px] max-[760px]:pb-20',
   inner: 'mx-auto grid max-w-[1180px] grid-cols-[minmax(0,.95fr)_minmax(0,1fr)] items-center gap-[clamp(60px,8vw,120px)] max-[1000px]:gap-12 max-[760px]:max-w-[520px] max-[760px]:grid-cols-1 max-[760px]:gap-16',
   photography: 'group/photo relative m-0 pl-[35px] max-[1000px]:pl-[22px] max-[760px]:mx-auto max-[760px]:w-full max-[760px]:max-w-[380px] max-[760px]:pr-4 max-[760px]:pl-9',
   film: 'mx-auto max-w-[410px] -rotate-4 border border-[#383a32] bg-[#080908] px-[15px] shadow-[10px_20px_35px_#0002] transition-transform duration-[650ms] ease-[cubic-bezier(.2,.65,.2,1)] motion-safe:group-hover/photo:-rotate-[1.5deg] motion-reduce:transition-none max-[760px]:px-3',
@@ -53,7 +53,7 @@ export default function About() {
               <span>LOUISVILLE, KY</span><span>THE PERSON BEHIND THE POSTS</span>
             </div>
           </div>
-          <figcaption className={styles.photoCaption}>A little more personal.</figcaption>
+          {/* <figcaption className={styles.photoCaption}>A little more personal.</figcaption> */}
         </figure>
 
         <div>
