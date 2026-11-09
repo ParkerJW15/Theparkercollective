@@ -108,3 +108,7 @@ body {
   background-position: center;
   background-repeat: repeat-x;
 }
+
+@media (max-width: 900px) {
+  .footer-lines { background-size: 320px 100%; }
+}

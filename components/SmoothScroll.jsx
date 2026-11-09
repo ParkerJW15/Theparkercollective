@@ -100,17 +100,13 @@ export default function SmoothScroll({ children }) {
       return () => underlay.removeAttribute('data-media-covered');
     });
 
-    media.add('(prefers-reduced-motion: no-preference)', () => {
+    media.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
       const footer = content.current.querySelector('[data-footer-reveal]');
       const footerContent = content.current.querySelector('[data-footer-content]');
       if (!footer || !footerContent) return;
-      // A tall mobile footer needs room to scroll past the viewport.
-      gsap.fromTo(footerContent, {
-        yPercent: () => window.innerWidth > 900 ? -100 : 0,
-        y: () => window.innerWidth > 900 ? 0 : -Math.min(window.innerHeight * .25, 200),
-      }, {
+      // Keep mobile footers in normal flow; reveal only on larger screens.
+      gsap.fromTo(footerContent, { yPercent: -100 }, {
         yPercent: 0,
-        y: 0,
         ease: 'none',
         scrollTrigger: { trigger: footer, start: 'top bottom', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true },
       });

@@ -64,7 +64,7 @@ export default function About() {
           <div className={styles.headingRow}>
             <h2 data-text="heading" id="about-title" className={styles.title}><RevealLine>Hey, I’m</RevealLine><RevealLine index={1}><span data-emphasis>Parker.</span></RevealLine></h2>
             <div className={styles.logo} aria-hidden="true">
-              <Image src="/images/brand/parker-collective-logo-transparent.png" alt="" width={2000} height={2000} sizes="520px" className="absolute top-1/2 left-1/2 h-auto w-[500%] max-w-none -translate-x-1/2 -translate-y-1/2" />
+              <Image src="/images/brand/parker-collective-logo-transparent.png" alt="" width={2000} height={2000} sizes="520px" className="absolute top-1/2 left-1/2 h-auto w-[500%] max-w-none -translate-x-1/2 -translate-y-[47.75%]" />
             </div>
           </div>
           <p className={styles.intro}>Your social media partner,<br />from the first idea to the final post.</p>
