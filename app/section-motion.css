@@ -2,42 +2,39 @@
 @media (prefers-reduced-motion: no-preference) {
   [data-motion][data-entered] { --motion-ease: cubic-bezier(.22, 1, .36, 1); }
 
-  /* The three notes land at their existing, slightly different angles. */
-  [data-motion="notes"][data-entered] > article {
-    animation: note-settle .65s var(--motion-ease) backwards;
+  /* Each note enters from a side when it reaches the viewport. */
+  [data-motion="note"][data-entered] {
+    animation: component-side-arrive .7s var(--motion-ease) backwards;
   }
-  [data-motion="notes"] > article:nth-child(2) { animation-delay: .09s; }
-  [data-motion="notes"] > article:nth-child(3) { animation-delay: .18s; }
-  [data-motion="notes"] > article { transition: translate .3s ease; }
-  [data-motion="notes"] > article:hover { translate: 0 -5px; }
+  [data-motion="notes"] > article:nth-child(even) { --component-offset: 40px; animation-delay: .07s; }
+  [data-motion="notes"] > article:nth-child(odd) { --component-offset: -40px; }
 
-  /* Package titles slide into place; the inclusion rule draws like a pencil line. */
+  /* Simple package entrances and an understated divider reveal. */
+  [data-motion="package"][data-entered] { animation: component-side-arrive .7s var(--motion-ease) backwards; }
   [data-motion="package"][data-entered] [data-package-rule]::before { animation: rule-draw .65s var(--motion-ease) .1s backwards; }
-  [data-motion="package"] a > span { transition: transform .25s ease; }
-  [data-motion="package"] a:hover > span { transform: translate(3px, -3px); }
 
   /* Keep the staggered composition; bring each caption in from its own side. */
-  [data-motion="clip"][data-entered] > div { animation: frame-arrive .65s var(--motion-ease) backwards; }
+  [data-motion="clip"][data-entered] > div { animation: component-side-arrive .7s var(--motion-ease) backwards; }
   [data-motion="clip"][data-entered] figcaption { animation: text-body-arrive .65s var(--motion-ease) .16s backwards; }
-  [data-motion="clip"]:nth-child(even) { --caption-offset: 12px; }
-  [data-motion="clip"]:nth-child(odd) { --caption-offset: -12px; }
+  [data-motion="clip"]:nth-child(even) { --component-offset: 32px; }
+  [data-motion="clip"]:nth-child(odd) { --component-offset: -32px; }
   [data-motion="clip"] figcaption > span:first-child { transition: translate .25s ease; }
   [data-motion="clip"]:hover figcaption > span:first-child { translate: 3px 0; }
 
-  [data-motion="review"][data-entered] { animation: review-arrive .65s var(--motion-ease) backwards; }
-  [data-motion="portrait"][data-entered] > div { animation: portrait-settle .8s var(--motion-ease) backwards; }
+  [data-motion="review"][data-entered] { animation: component-side-arrive .7s var(--motion-ease) backwards; }
+  [data-motion="portrait"][data-entered] > div { --component-offset: -36px; animation: component-side-arrive .8s var(--motion-ease) backwards; }
 
   /* The FAQ affordance turns on hover; the existing open/close animation stays. */
   #faq h3 button > span:last-child { transition: transform .25s ease, background-color .2s; }
   #faq h3 button:hover > span:last-child { transform: rotate(90deg); }
-  [data-motion="faq"][data-entered] > div { animation: detail-arrive .45s ease backwards; }
+  [data-motion="faq"][data-entered] > div { animation: component-side-arrive .6s ease backwards; }
   [data-motion="faq"] > div:nth-child(2) { animation-delay: .04s; }
   [data-motion="faq"] > div:nth-child(3) { animation-delay: .08s; }
   [data-motion="faq"] > div:nth-child(4) { animation-delay: .12s; }
   [data-motion="faq"] > div:nth-child(5) { animation-delay: .16s; }
 
   /* Final invitation: lines reveal in reading order, then the form arrives. */
-  [data-motion="form"][data-entered] { animation: form-arrive .65s var(--motion-ease) backwards; }
+  [data-motion="form"][data-entered] { animation: component-side-arrive .7s var(--motion-ease) backwards; }
   [data-motion="form"] label { transition: color .2s ease; }
   [data-motion="form"] label:focus-within { color: var(--color-olive); }
   [data-motion="form"] input, [data-motion="form"] textarea, [data-motion="form"] select { transition: border-color .2s ease; }
@@ -59,16 +56,7 @@
   transform-origin: left;
 }
 
-@keyframes note-settle { from { transform: translateY(24px) rotate(-2deg); opacity: 0; } to { transform: translateY(0) rotate(0); opacity: 1; } }
-@keyframes heading-arrive { from { translate: 0 16px; opacity: 0; } to { translate: 0 0; opacity: 1; } }
-@keyframes detail-arrive { from { translate: 0 9px; opacity: 0; } to { translate: 0 0; opacity: 1; } }
-@keyframes package-title { from { translate: -14px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
 @keyframes rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-@keyframes frame-arrive { from { translate: 0 20px; scale: .985; opacity: 0; } to { translate: 0 0; scale: 1; opacity: 1; } }
-@keyframes caption-arrive { from { translate: var(--caption-offset) 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
-@keyframes review-arrive { from { scale: .97; opacity: 0; } to { scale: 1; opacity: 1; } }
-@keyframes portrait-settle { from { transform: translateY(18px) rotate(-3deg); opacity: 0; } to { transform: translateY(0) rotate(0); opacity: 1; } }
-@keyframes form-arrive { from { translate: 18px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
 
 /* A shared editorial text rhythm: label, masked heading lines, supporting copy. */
 :root {
@@ -106,4 +94,11 @@
 @keyframes text-label-arrive {
   from { transform: translateY(6px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+/* Contain horizontal entrances without making a new sticky scroll container. */
+#why-parker, #packages, #work { overflow-x: clip; }
+@keyframes component-side-arrive {
+  from { transform: translateX(var(--component-offset, 32px)); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }

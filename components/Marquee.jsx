@@ -6,10 +6,10 @@ export default function Marquee() {
   // const [paused, setPaused] = useState(false);
 
   return (
-    <div className="group/marquee relative overflow-hidden bg-ink py-[18px] text-brand-accent">
+    <div data-marquee className="group/marquee relative overflow-hidden bg-ink py-[18px] text-brand-accent">
       <p className="sr-only">A plan for your socials. Space for your business.</p>
       <div
-        className="flex w-max motion-safe:animate-[ticker_36s_linear_infinite] group-hover/marquee:[animation-play-state:paused] group-focus-within/marquee:[animation-play-state:paused] group-data-[paused=true]/marquee:[animation-play-state:paused]"
+        className="flex w-max motion-safe:animate-[ticker_28s_linear_infinite]"
         aria-hidden="true"
       >
         {[0, 1, 2, 3].map((copy) => (

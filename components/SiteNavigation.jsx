@@ -84,7 +84,7 @@ export default function SiteNavigation() {
       if (smoother && ScrollSmoother.get() === smoother) smoother.paused(wasPaused);
     };
 
-    // Native top-layer placement avoids ScrollSmoother's transformed wrapper.
+    // Native top-layer placement keeps the menu above the page.
     // The browser also traps focus and makes the underlying page inert.
     dialog.current.showModal();
     setOpen(true);

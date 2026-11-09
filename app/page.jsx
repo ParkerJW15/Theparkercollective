@@ -17,7 +17,7 @@ export default function Home() {
       <a href="#main" className="fixed top-3 left-3 z-100 -translate-y-[150%] bg-brand-accent px-5 py-3 text-black focus:translate-y-0">Skip to content</a>
       <SectionMotion />
       <SmoothScroll>
-        <main id="main" tabIndex={-1} className="relative z-10 rounded-b-[48px] bg-paper max-[760px]:rounded-b-[30px]">
+        <main id="main" tabIndex={-1} className="relative z-10 rounded-b-[48px] bg-white max-[760px]:rounded-b-[30px]">
           <Hero />
           <ConversionSection />
           <Packages />
@@ -26,7 +26,7 @@ export default function Home() {
             <div data-section-underlay className="relative z-0">
               <Testimonials />
             </div>
-            <div data-section-cover className="relative z-10 bg-paper">
+            <div data-section-cover className="relative z-10 bg-white">
               <Marquee />
               <About />
             </div>

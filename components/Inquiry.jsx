@@ -18,7 +18,7 @@ const styles = {
   form: 'border border-white/40 bg-[#f2f1ebf5] p-[clamp(26px,3.3vw,48px)] text-ink max-[900px]:p-8 max-[480px]:p-[26px]',
   formHeading: 'text-[30px] leading-[1.1] font-bold tracking-[-.04em]',
   requiredNote: 'mt-3 text-[11px] text-[#5a6050]',
-  fields: 'mt-8 grid grid-cols-2 gap-6 max-[480px]:grid-cols-1 max-[480px]:gap-6 [&_label]:flex [&_label]:flex-col [&_label]:gap-2.5 [&_label]:text-[11px] [&_label]:leading-[1.5] [&_label]:font-semibold [&_:is(input,select,textarea)]:min-w-0 [&_:is(input,select,textarea)]:w-full [&_:is(input,select,textarea)]:rounded-none [&_:is(input,select,textarea)]:border-0 [&_:is(input,select,textarea)]:border-b [&_:is(input,select,textarea)]:border-[#a4ab98] [&_:is(input,select,textarea)]:bg-transparent [&_:is(input,select,textarea)]:py-2.5 [&_:is(input,select,textarea)]:text-sm [&_:is(input,select,textarea)]:leading-[1.5] [&_:is(input,select,textarea)]:font-normal [&_:is(input,select,textarea)]:text-ink [&_input::placeholder]:text-[#6d7363] [&_textarea::placeholder]:text-[#6d7363] [&_textarea]:min-h-[110px] [&_textarea]:max-h-[320px] [&_textarea]:resize-y [&_select]:min-h-11 [&_option]:bg-paper [&_option]:text-ink [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-[5px] [&_:focus-visible]:outline-olive max-[480px]:[&_:is(input,select,textarea)]:text-base',
+  fields: 'mt-8 grid grid-cols-2 gap-6 max-[480px]:grid-cols-1 max-[480px]:gap-6 [&_label]:flex [&_label]:flex-col [&_label]:gap-2.5 [&_label]:text-[11px] [&_label]:leading-[1.5] [&_label]:font-semibold [&_:is(input,select,textarea)]:min-w-0 [&_:is(input,select,textarea)]:w-full [&_:is(input,select,textarea)]:rounded-none [&_:is(input,select,textarea)]:border-0 [&_:is(input,select,textarea)]:border-b [&_:is(input,select,textarea)]:border-[#a4ab98] [&_:is(input,select,textarea)]:bg-transparent [&_:is(input,select,textarea)]:py-2.5 [&_:is(input,select,textarea)]:text-sm [&_:is(input,select,textarea)]:leading-[1.5] [&_:is(input,select,textarea)]:font-normal [&_:is(input,select,textarea)]:text-ink [&_input::placeholder]:text-[#6d7363] [&_textarea::placeholder]:text-[#6d7363] [&_textarea]:min-h-[110px] [&_textarea]:max-h-[320px] [&_textarea]:resize-y [&_select]:min-h-11 [&_option]:bg-white [&_option]:text-ink [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-[5px] [&_:focus-visible]:outline-olive max-[480px]:[&_:is(input,select,textarea)]:text-base',
   full: 'col-span-full',
   deliveryNote: 'mt-[25px] text-[11px] leading-[1.5] text-[#5a6050]',
   submit: 'mt-3.5 flex min-h-[54px] w-full cursor-pointer items-center justify-between gap-5 bg-brand-accent px-5 py-4 text-[11px] font-bold tracking-[.04em] text-ink uppercase transition-colors hover:bg-[#d5ed75] focus-visible:outline-ink motion-reduce:transition-none [&>span]:text-2xl [&>span]:leading-none',
@@ -47,7 +47,7 @@ export default function Inquiry() {
   return (
     <section id="inquiry" className={styles.section} aria-labelledby="inquiry-title">
       <Image src="/images/backgrounds/inquiry-poster.jpg" alt="" fill sizes="100vw" className={styles.poster} />
-      <BackgroundVideo src="/videos/b-roll/interior-pendant-light-web.mp4" className={styles.video} />
+      <BackgroundVideo src="/videos/b-roll/photographer-shadow-on-chair.mp4" className={styles.video} />
       <div className={styles.overlay} />
       <div className={styles.inner}>
         <div data-motion="inquiry" className={styles.intro}>

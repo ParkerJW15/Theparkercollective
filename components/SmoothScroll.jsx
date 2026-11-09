@@ -79,15 +79,6 @@ export default function SmoothScroll({ children }) {
       const underlay = stack?.querySelector('[data-section-underlay]');
       const cover = stack?.querySelector('[data-section-cover]');
       if (!stack || !underlay || !cover) return;
-      // Pause the pinned background once About covers it completely. Keep the
-      // existing transition, but do not decode an invisible video underneath it.
-      const updateMediaCover = () => {
-        const bounds = cover.getBoundingClientRect();
-        const covered = bounds.top <= 0 && bounds.bottom >= window.innerHeight;
-        if (covered !== underlay.hasAttribute('data-media-covered')) {
-          underlay.toggleAttribute('data-media-covered', covered);
-        }
-      };
       ScrollTrigger.create({
         trigger: underlay,
         start: 'bottom bottom',
@@ -96,19 +87,30 @@ export default function SmoothScroll({ children }) {
         pinType: 'transform',
         pinSpacing: false,
         invalidateOnRefresh: true,
-        onUpdate: updateMediaCover,
-        onRefresh: updateMediaCover,
       });
-      updateMediaCover();
+      // Toggle playback only at coverage boundaries, without layout reads on every frame.
+      const coverage = ScrollTrigger.create({
+        trigger: cover,
+        start: 'top top',
+        end: 'bottom top',
+        onToggle: self => underlay.toggleAttribute('data-media-covered', self.isActive),
+        onRefresh: self => underlay.toggleAttribute('data-media-covered', self.isActive),
+      });
+      underlay.toggleAttribute('data-media-covered', coverage.isActive);
       return () => underlay.removeAttribute('data-media-covered');
     });
 
-    media.add('(min-width: 901px) and (prefers-reduced-motion: no-preference)', () => {
+    media.add('(prefers-reduced-motion: no-preference)', () => {
       const footer = content.current.querySelector('[data-footer-reveal]');
       const footerContent = content.current.querySelector('[data-footer-content]');
       if (!footer || !footerContent) return;
-      gsap.fromTo(footerContent, { yPercent: -100 }, {
+      // A tall mobile footer needs room to scroll past the viewport.
+      gsap.fromTo(footerContent, {
+        yPercent: () => window.innerWidth > 900 ? -100 : 0,
+        y: () => window.innerWidth > 900 ? 0 : -Math.min(window.innerHeight * .25, 200),
+      }, {
         yPercent: 0,
+        y: 0,
         ease: 'none',
         scrollTrigger: { trigger: footer, start: 'top bottom', end: 'bottom bottom', scrub: true, invalidateOnRefresh: true },
       });

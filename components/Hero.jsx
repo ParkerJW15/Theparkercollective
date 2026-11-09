@@ -96,12 +96,12 @@ export default function Hero() {
         </div>
       </section>
 
-      <div className="group/ticker overflow-hidden bg-brand-accent py-5 text-black">
+      <div data-marquee className="group/ticker overflow-hidden bg-brand-accent py-5 text-black">
         <p className="sr-only">
           Social media management, content creation, and brand strategy.
         </p>
         <div
-          className="flex w-max motion-safe:animate-[ticker_40s_linear_infinite] group-hover/ticker:[animation-play-state:paused]"
+          className="flex w-max motion-safe:animate-[ticker_32s_linear_infinite]"
           aria-hidden="true"
         >
           {[0, 1, 2, 3].map((copy) => (

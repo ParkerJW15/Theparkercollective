@@ -7,7 +7,7 @@ const links = [
 
 export default function Footer() {
   return (
-    <footer data-motion="footer" data-footer-reveal className="relative z-0 -mt-12 overflow-hidden bg-brand-accent text-ink" aria-label="Site footer">
+    <footer data-motion="footer" data-footer-reveal className="relative z-0 -mt-12 footer-lines overflow-hidden bg-white text-ink" aria-label="Site footer">
       <div data-footer-content className="section-inset pt-24 pb-8 max-[760px]:pt-20">
         <div className="mx-auto max-w-[1180px]">
           <nav aria-label="Footer navigation" className="grid grid-cols-6 gap-x-7 gap-y-5 border-b border-ink/20 pb-8 max-[760px]:grid-cols-3 max-[400px]:grid-cols-2">

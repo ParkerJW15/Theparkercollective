@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 // Keep the same backgrounds, but only load/play a video while it can be seen.
-export default function BackgroundVideo({ src, ...props }) {
+export default function BackgroundVideo({ src, decorative = true, ...props }) {
   const video = useRef(null);
 
   useEffect(() => {
@@ -36,9 +36,9 @@ export default function BackgroundVideo({ src, ...props }) {
     };
 
     const observer = new IntersectionObserver(([entry]) => {
-      inView = entry.isIntersecting;
+      inView = entry.isIntersecting && entry.intersectionRatio >= 0.15;
       updatePlayback();
-    }, { threshold: 0 });
+    }, { threshold: [0, 0.15] });
     observer.observe(player);
 
     // A pinned section can be in the viewport yet completely covered by About.
@@ -59,5 +59,5 @@ export default function BackgroundVideo({ src, ...props }) {
     };
   }, [src]);
 
-  return <video {...props} ref={video} muted loop playsInline preload="none" aria-hidden="true" tabIndex={-1} />;
+  return <video {...props} ref={video} muted loop playsInline preload="none" aria-hidden={decorative ? true : undefined} tabIndex={-1} />;
 }

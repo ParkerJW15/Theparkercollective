@@ -24,7 +24,7 @@ function ScallopedCard({ id, image }) {
 
 export default function ConversionSection() {
   return (
-    <section id="why-parker" aria-labelledby="why-parker-title" className="section-space paper-grain bg-white text-ink">
+    <section id="why-parker" aria-labelledby="why-parker-title" className="section-space bg-white text-ink">
       <div className="mx-auto max-w-[1180px]">
         <div data-motion="intro" className="mx-auto max-w-[1000px] text-center">
           <p className="mb-6 text-[10px] font-semibold tracking-[.18em] text-olive uppercase">01 / Sound familiar?</p>
@@ -33,7 +33,7 @@ export default function ConversionSection() {
         </div>
         <div data-motion="notes" className="mt-16 grid grid-cols-3 gap-6 max-[760px]:mx-auto max-[760px]:max-w-[380px] max-[760px]:grid-cols-1 max-[760px]:gap-8">
           {concerns.map(item => (
-            <article key={item.number} className={`relative flex aspect-square items-center justify-center ${item.color} ${item.tilt}`}>
+            <article data-motion="note" key={item.number} className={`relative flex aspect-square items-center justify-center ${item.color} ${item.tilt}`}>
               <ScallopedCard id={item.number} image={item.image} />
               <div className="relative z-1 px-[14%] py-10 text-center text-ink">
                 <p className="mb-5 font-mono text-[10px] tracking-[.15em] text-olive">{item.number}</p>

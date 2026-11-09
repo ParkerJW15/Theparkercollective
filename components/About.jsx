@@ -1,7 +1,7 @@
 import RevealLine from './RevealLine';
 import Image from 'next/image';
 const styles = {
-  about: 'section-space paper-grain overflow-hidden bg-white text-ink',
+  about: 'section-space overflow-hidden bg-white text-ink',
   inner: 'mx-auto grid max-w-[1180px] grid-cols-[minmax(0,.95fr)_minmax(0,1fr)] items-center gap-[clamp(60px,8vw,120px)] max-[1000px]:gap-12 max-[760px]:max-w-[520px] max-[760px]:grid-cols-1 max-[760px]:gap-16',
   photography: 'group/photo relative m-0 pl-[35px] max-[1000px]:pl-[22px] max-[760px]:mx-auto max-[760px]:w-full max-[760px]:max-w-[380px] max-[760px]:pr-4 max-[760px]:pl-9',
   film: 'mx-auto max-w-[410px] -rotate-4 border border-[#383a32] bg-[#080908] px-[15px] shadow-[10px_20px_35px_#0002] transition-transform duration-[650ms] ease-[cubic-bezier(.2,.65,.2,1)] motion-safe:group-hover/photo:-rotate-[1.5deg] motion-reduce:transition-none max-[760px]:px-3',
@@ -14,7 +14,9 @@ const styles = {
   portraitPhoto: 'object-cover object-center',
   photoCaption: 'absolute top-[52%] -left-[7px] rotate-180 font-editorial text-[23px] whitespace-nowrap text-olive italic [writing-mode:vertical-rl] max-[1000px]:-left-3 max-[1000px]:text-xl max-[760px]:left-0',
   eyebrow: 'mb-6 flex items-center gap-[18px] text-[10px] font-semibold tracking-[.18em] text-olive uppercase [&>span]:text-[#686c5f] max-[760px]:mb-6 max-[760px]:gap-3.5 max-[760px]:text-[9px]',
-  title: 'mb-8 text-[clamp(54px,5.4vw,78px)] leading-[.95] font-bold tracking-[-.065em] uppercase [&_[data-emphasis]]:text-ink [&_[data-emphasis]]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[56px] max-[760px]:text-[clamp(54px,14vw,72px)]',
+  headingRow: 'mb-8 flex items-center justify-between gap-[clamp(12px,2vw,24px)]',
+  logo: 'relative aspect-[3/5] w-[clamp(44px,8vw,104px)] shrink-0 rotate-12 overflow-hidden',
+  title: 'min-w-0 text-[clamp(54px,5.4vw,78px)] leading-[.95] font-bold tracking-[-.065em] uppercase [&_[data-emphasis]]:text-ink [&_[data-emphasis]]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[56px] max-[760px]:text-[clamp(54px,14vw,72px)]',
   intro: 'mb-6 text-xl leading-[1.45] tracking-[-.025em] max-[1000px]:text-lg',
   body: 'text-[15px] leading-[1.8] text-muted [&_p+p]:mt-5 max-[1000px]:text-sm max-[760px]:text-[15px]',
   contact: 'mt-8 inline-flex min-h-[54px] items-center justify-between gap-9 bg-brand-accent px-6 py-[15px] text-[11px] font-bold tracking-[.035em] text-black uppercase transition-colors hover:bg-ink hover:text-brand-accent focus-visible:outline-ink motion-reduce:transition-none [&_svg]:transition-transform [&_svg]:duration-300 hover:[&_svg]:translate-x-[3px] hover:[&_svg]:-translate-y-[3px] motion-reduce:[&_svg]:transition-none max-[760px]:w-full',
@@ -59,7 +61,12 @@ export default function About() {
 
         <div data-motion="about-copy">
           <p data-text="eyebrow" className={styles.eyebrow}><span aria-hidden="true">05 /</span> Behind the collective</p>
-          <h2 data-text="heading" id="about-title" className={styles.title}><RevealLine>Hey, I’m</RevealLine><RevealLine index={1}><span data-emphasis>Parker.</span></RevealLine></h2>
+          <div className={styles.headingRow}>
+            <h2 data-text="heading" id="about-title" className={styles.title}><RevealLine>Hey, I’m</RevealLine><RevealLine index={1}><span data-emphasis>Parker.</span></RevealLine></h2>
+            <div className={styles.logo} aria-hidden="true">
+              <Image src="/images/brand/parker-collective-logo-transparent.png" alt="" width={2000} height={2000} sizes="520px" className="absolute top-1/2 left-1/2 h-auto w-[500%] max-w-none -translate-x-1/2 -translate-y-1/2" />
+            </div>
+          </div>
           <p className={styles.intro}>Your social media partner,<br />from the first idea to the final post.</p>
           <div className={styles.body}>
             <p>

@@ -60,9 +60,10 @@ export default function SiteHeader() {
               href={instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="nav-instagram hidden items-center gap-2 text-xs text-white transition-colors hover:text-brand-accent sm:flex"
+              aria-label="The Parker Collective on Instagram"
+              className="nav-instagram hidden size-11 items-center justify-center text-white transition-colors hover:text-brand-accent sm:inline-flex"
             >
-              Instagram <Arrow className="h-3.5 w-3.5" />
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
             </a>
             <a
               href={contact}

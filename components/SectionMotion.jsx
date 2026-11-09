@@ -33,9 +33,30 @@ export default function SectionMotion() {
       document.querySelectorAll('[data-motion]:not([data-entered]), [data-text]:not([data-entered])').forEach(element => observer.observe(element));
     };
 
+    // Keep continuous ticker animations asleep while offscreen or in a hidden tab.
+    const visibleTickers = new Set();
+    const updateTickers = () => {
+      document.querySelectorAll('[data-marquee]').forEach(element => {
+        element.setAttribute('data-active', String(visibleTickers.has(element) && !document.hidden));
+      });
+    };
+    const tickerObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleTickers.add(entry.target);
+        else visibleTickers.delete(entry.target);
+      });
+      updateTickers();
+    }, { rootMargin: '160px 0px' });
+    document.querySelectorAll('[data-marquee]').forEach(element => tickerObserver.observe(element));
+    document.addEventListener('visibilitychange', updateTickers);
     observe();
     preference.addEventListener('change', observe);
-    return () => { observer?.disconnect(); preference.removeEventListener('change', observe); };
+    return () => {
+      observer?.disconnect();
+      tickerObserver.disconnect();
+      document.removeEventListener('visibilitychange', updateTickers);
+      preference.removeEventListener('change', observe);
+    };
   }, []);
 
   return null;

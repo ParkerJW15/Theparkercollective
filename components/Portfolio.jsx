@@ -2,7 +2,7 @@
 
 import RevealLine from './RevealLine';
 
-import { useEffect, useRef, useState } from 'react';
+import BackgroundVideo from './BackgroundVideo';
 const styles = {
   section: 'section-space bg-white text-ink [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-[5px] [&_:focus-visible]:outline-ink',
   inner: 'mx-auto max-w-[1180px] [&_h2]:text-center [&_h2]:text-[clamp(44px,5.2vw,76px)] [&_h2]:leading-[.99] [&_h2]:font-bold [&_h2]:tracking-[-.065em] [&_h2]:uppercase [&_h2_em]:font-editorial [&_h2_em]:font-normal [&_h2_em]:tracking-[-.055em] [&_h2_em]:normal-case [&_h2_em]:italic max-[480px]:[&_h2]:text-[43px]',
@@ -22,26 +22,11 @@ const clips = [
 ];
 
 function PortfolioVideo({ clip }) {
-  const video = useRef(null);
-  useEffect(() => {
-    const player = video.current;
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !motion.matches) {
-        if (!player.getAttribute('src')) player.src = `/videos/portfolio/${clip.file}.mp4`;
-        player.play().catch(() => {});
-      } else player.pause();
-    }, { threshold: 0.15 });
-    const stopForMotion = () => { if (motion.matches) player.pause(); };
-    observer.observe(player);
-    motion.addEventListener('change', stopForMotion);
-    return () => { observer.disconnect(); motion.removeEventListener('change', stopForMotion); player.pause(); };
-  }, [clip.file]);
 
   return (
     <figure data-motion="clip" className={styles.clip}>
       <div className={styles.videoFrame}>
-        <video ref={video} muted loop playsInline preload="none" poster={`/images/portfolio/${clip.file}.jpg`} aria-label={clip.description} />
+        <BackgroundVideo src={`/videos/portfolio/${clip.file}.mp4`} decorative={false} poster={`/images/portfolio/${clip.file}.jpg`} aria-label={clip.description} />
       </div>
       <figcaption><span>{clip.title}</span><span>{clip.description}</span></figcaption>
     </figure>

@@ -96,14 +96,15 @@
   .trigger, .brand, .inquire, .close, .bars span, .label { transition: none; }
 }
 
-.triggerSpace { display: block; width: 100px; height: 44px; }
+.triggerSpace { display: block; width: 44px; height: 44px; }
 .fixedTrigger {
   position: fixed;
   top: 36px;
   right: var(--page-gutter);
   z-index: 60;
-  min-width: 100px;
-  padding-inline: 12px;
+  width: 44px;
+  min-width: 44px;
+  padding-inline: 10px;
   background: var(--color-ink);
   color: var(--color-paper);
 }

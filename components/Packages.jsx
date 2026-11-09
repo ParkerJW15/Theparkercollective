@@ -1,7 +1,7 @@
 import RevealLine from './RevealLine';
 import Image from 'next/image';
 const styles = {
-  section: 'section-space bg-paper text-ink',
+  section: 'section-space bg-white text-ink',
   layout: 'mx-auto grid max-w-[1180px] grid-cols-2 items-start gap-8 max-[900px]:max-w-[600px] max-[900px]:grid-cols-1',
   visual: 'sticky top-6 h-[calc(100svh-48px)] min-h-[540px] max-h-[900px] overflow-hidden max-[900px]:relative max-[900px]:top-auto max-[900px]:h-[640px] max-[900px]:min-h-0 max-[900px]:max-h-[85svh]',
   photo: 'object-cover object-[center_42%]',
@@ -16,7 +16,7 @@ const styles = {
   cardTop: 'flex justify-between gap-5 text-[9px] font-semibold tracking-[.12em] uppercase max-[400px]:gap-2.5 max-[400px]:text-[8px]',
   description: 'mt-[18px] max-w-[380px] text-base leading-[1.6]',
   includes: 'mt-8 pt-6 text-[10px] font-semibold tracking-[.13em] uppercase',
-  cta: 'mt-8 flex items-center justify-between gap-5 bg-ink px-[22px] py-[18px] text-[11px] font-semibold tracking-[.04em] text-white uppercase transition-colors hover:bg-[#3e4b2a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none [&>span]:text-[22px] [&>span]:leading-none',
+  cta: 'mx-auto mt-8 flex min-h-14 w-1/2 items-center justify-center gap-2 bg-ink px-3 py-3 text-center text-[11px] font-semibold tracking-[.04em] text-white uppercase transition-colors hover:bg-olive focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none [&>span]:text-[22px] [&>span]:leading-none max-[480px]:[&>span]:hidden',
 };
 
 // Package inclusions transcribed from Parker's supplied Instagram carousel.
