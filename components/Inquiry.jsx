@@ -1,5 +1,7 @@
 'use client';
 
+import RevealLine from './RevealLine';
+
 import { useState } from 'react';
 import BackgroundVideo from './BackgroundVideo';
 import Image from 'next/image';
@@ -9,7 +11,7 @@ const styles = {
   video: 'absolute inset-0 -z-2 h-full w-full object-cover object-center',
   overlay: 'absolute inset-0 -z-1 bg-[linear-gradient(90deg,#090c08c9,#090c088c)]',
   inner: 'mx-auto grid max-w-[1180px] grid-cols-[minmax(0,.9fr)_minmax(0,1.1fr)] items-center gap-[clamp(40px,6vw,90px)] max-[900px]:max-w-[600px] max-[900px]:grid-cols-1 max-[900px]:gap-12',
-  intro: '[&_h2]:text-[clamp(48px,5.5vw,80px)] [&_h2]:leading-[.99] [&_h2]:font-bold [&_h2]:tracking-[-.065em] [&_h2]:uppercase [&_h2_span]:text-brand-accent max-[900px]:[&_h2]:text-[clamp(52px,10vw,76px)]',
+  intro: '[&_h2]:text-[clamp(48px,5.5vw,80px)] [&_h2]:leading-[.99] [&_h2]:font-bold [&_h2]:tracking-[-.065em] [&_h2]:uppercase [&_h2_[data-emphasis]]:text-brand-accent max-[900px]:[&_h2]:text-[clamp(52px,10vw,76px)]',
   eyebrow: 'mb-6 text-[10px] tracking-[.16em] text-brand-accent uppercase',
   description: 'mt-8 max-w-[345px] text-base leading-[1.75] text-[#eceee5] max-[900px]:max-w-[400px]',
   email: 'mt-8 inline-flex items-center gap-4 border-b border-white/45 pb-2.5 text-[13px] wrap-anywhere max-[480px]:text-xs',
@@ -48,13 +50,13 @@ export default function Inquiry() {
       <BackgroundVideo src="/videos/b-roll/interior-pendant-light-web.mp4" className={styles.video} />
       <div className={styles.overlay} />
       <div className={styles.inner}>
-        <div className={styles.intro}>
-          <p className={styles.eyebrow}>07 / Work with Parker</p>
-          <h2 id="inquiry-title">Let’s talk<br />about your<br /><span>socials.</span></h2>
+        <div data-motion="inquiry" className={styles.intro}>
+          <p data-text="eyebrow" className={styles.eyebrow}>07 / Work with Parker</p>
+          <h2 data-text="heading" id="inquiry-title"><RevealLine>Let’s talk</RevealLine><RevealLine index={1}>about your</RevealLine><RevealLine index={2}><span data-emphasis>socials.</span></RevealLine></h2>
           <p className={styles.description}>Tell me what you do and where you need support. We’ll start with your goals, talk through your options, and find the right way to work together.</p>
           <a className={styles.email} href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com <span aria-hidden="true">↗</span></a>
         </div>
-        <form className={styles.form} onSubmit={openEmailDraft}>
+        <form data-motion="form" className={styles.form} onSubmit={openEmailDraft}>
           <p className={styles.formHeading}>Tell me about your business.</p>
           <p className={styles.requiredNote}>Not sure which package fits? We can work that out together.<br />Fields marked * are required.</p>
           <div className={styles.fields}>

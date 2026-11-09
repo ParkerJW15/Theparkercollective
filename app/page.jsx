@@ -1,3 +1,4 @@
+import SectionMotion from '@/components/SectionMotion';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Faq from '@/components/Faq';
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <a href="#main" className="fixed top-3 left-3 z-100 -translate-y-[150%] bg-brand-accent px-5 py-3 text-black focus:translate-y-0">Skip to content</a>
+      <SectionMotion />
       <SmoothScroll>
         <main id="main" tabIndex={-1} className="relative z-10 rounded-b-[48px] bg-paper max-[760px]:rounded-b-[30px]">
           <Hero />

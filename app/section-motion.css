@@ -1,0 +1,109 @@
+/* One-time section details. Everything is readable before JS and with reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion][data-entered] { --motion-ease: cubic-bezier(.22, 1, .36, 1); }
+
+  /* The three notes land at their existing, slightly different angles. */
+  [data-motion="notes"][data-entered] > article {
+    animation: note-settle .65s var(--motion-ease) backwards;
+  }
+  [data-motion="notes"] > article:nth-child(2) { animation-delay: .09s; }
+  [data-motion="notes"] > article:nth-child(3) { animation-delay: .18s; }
+  [data-motion="notes"] > article { transition: translate .3s ease; }
+  [data-motion="notes"] > article:hover { translate: 0 -5px; }
+
+  /* Package titles slide into place; the inclusion rule draws like a pencil line. */
+  [data-motion="package"][data-entered] [data-package-rule]::before { animation: rule-draw .65s var(--motion-ease) .1s backwards; }
+  [data-motion="package"] a > span { transition: transform .25s ease; }
+  [data-motion="package"] a:hover > span { transform: translate(3px, -3px); }
+
+  /* Keep the staggered composition; bring each caption in from its own side. */
+  [data-motion="clip"][data-entered] > div { animation: frame-arrive .65s var(--motion-ease) backwards; }
+  [data-motion="clip"][data-entered] figcaption { animation: text-body-arrive .65s var(--motion-ease) .16s backwards; }
+  [data-motion="clip"]:nth-child(even) { --caption-offset: 12px; }
+  [data-motion="clip"]:nth-child(odd) { --caption-offset: -12px; }
+  [data-motion="clip"] figcaption > span:first-child { transition: translate .25s ease; }
+  [data-motion="clip"]:hover figcaption > span:first-child { translate: 3px 0; }
+
+  [data-motion="review"][data-entered] { animation: review-arrive .65s var(--motion-ease) backwards; }
+  [data-motion="portrait"][data-entered] > div { animation: portrait-settle .8s var(--motion-ease) backwards; }
+
+  /* The FAQ affordance turns on hover; the existing open/close animation stays. */
+  #faq h3 button > span:last-child { transition: transform .25s ease, background-color .2s; }
+  #faq h3 button:hover > span:last-child { transform: rotate(90deg); }
+  [data-motion="faq"][data-entered] > div { animation: detail-arrive .45s ease backwards; }
+  [data-motion="faq"] > div:nth-child(2) { animation-delay: .04s; }
+  [data-motion="faq"] > div:nth-child(3) { animation-delay: .08s; }
+  [data-motion="faq"] > div:nth-child(4) { animation-delay: .12s; }
+  [data-motion="faq"] > div:nth-child(5) { animation-delay: .16s; }
+
+  /* Final invitation: lines reveal in reading order, then the form arrives. */
+  [data-motion="form"][data-entered] { animation: form-arrive .65s var(--motion-ease) backwards; }
+  [data-motion="form"] label { transition: color .2s ease; }
+  [data-motion="form"] label:focus-within { color: var(--color-olive); }
+  [data-motion="form"] input, [data-motion="form"] textarea, [data-motion="form"] select { transition: border-color .2s ease; }
+  [data-motion="form"] :is(input, textarea, select):focus { border-color: var(--color-olive); }
+
+  [data-motion="footer"] nav a > span { transition: translate .25s ease; }
+  [data-motion="footer"] nav a:hover > span { translate: 3px 0; }
+  [data-motion="footer"] a > img { transition: transform .4s ease; }
+  [data-motion="footer"] a:hover > img { transform: rotate(-3deg); }
+}
+
+[data-package-rule] { position: relative; }
+[data-package-rule]::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: rgb(25 27 23 / .2);
+  transform-origin: left;
+}
+
+@keyframes note-settle { from { transform: translateY(24px) rotate(-2deg); opacity: 0; } to { transform: translateY(0) rotate(0); opacity: 1; } }
+@keyframes heading-arrive { from { translate: 0 16px; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+@keyframes detail-arrive { from { translate: 0 9px; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+@keyframes package-title { from { translate: -14px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+@keyframes rule-draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes frame-arrive { from { translate: 0 20px; scale: .985; opacity: 0; } to { translate: 0 0; scale: 1; opacity: 1; } }
+@keyframes caption-arrive { from { translate: var(--caption-offset) 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+@keyframes review-arrive { from { scale: .97; opacity: 0; } to { scale: 1; opacity: 1; } }
+@keyframes portrait-settle { from { transform: translateY(18px) rotate(-3deg); opacity: 0; } to { transform: translateY(0) rotate(0); opacity: 1; } }
+@keyframes form-arrive { from { translate: 18px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
+
+/* A shared editorial text rhythm: label, masked heading lines, supporting copy. */
+:root {
+  --text-ease: cubic-bezier(.22, 1, .36, 1);
+  --text-duration: .9s;
+  --text-line-step: 90ms;
+}
+.text-reveal-line {
+  display: block;
+  overflow: hidden;
+  padding: .06em .06em .18em;
+  margin: -.06em -.06em -.18em;
+}
+.text-reveal-content { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  [data-text="heading"][data-entered] .text-reveal-content {
+    animation: text-line-arrive var(--text-duration) var(--text-ease) backwards;
+    animation-delay: calc(60ms + var(--line-index, 0) * var(--text-line-step));
+  }
+  [data-text="body"][data-entered] {
+    animation: text-body-arrive .65s var(--text-ease) var(--text-delay, 180ms) backwards;
+  }
+  [data-text="eyebrow"][data-entered] {
+    animation: text-label-arrive .5s var(--text-ease) backwards;
+  }
+}
+@keyframes text-line-arrive {
+  from { transform: translateY(105%); opacity: .15; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes text-body-arrive {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes text-label-arrive {
+  from { transform: translateY(6px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}

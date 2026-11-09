@@ -1,4 +1,5 @@
 import './globals.css';
+import './section-motion.css';
 
 export const metadata = {
   title: 'The Parker Collective | Louisville Social Media Management',

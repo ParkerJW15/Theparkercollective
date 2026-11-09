@@ -1,11 +1,13 @@
 'use client';
 
+import RevealLine from './RevealLine';
+
 import { useState } from 'react';
 const styles = {
   section: 'section-inset section-bottom paper-grain bg-paper text-ink',
   inner: 'mx-auto grid max-w-[1180px] grid-cols-[minmax(0,.8fr)_minmax(0,1.35fr)] items-start gap-[clamp(48px,7vw,108px)] border-t border-[#cccec3] pt-[var(--section-space)] max-[1000px]:gap-10 max-[760px]:max-w-[520px] max-[760px]:grid-cols-1 max-[760px]:gap-[38px]',
   eyebrow: 'mb-6 flex items-center gap-[18px] text-[10px] font-semibold tracking-[.18em] text-olive uppercase [&>span]:text-[#686c5f] max-[760px]:mb-6 max-[760px]:text-[9px]',
-  title: 'm-0 text-[clamp(46px,4.6vw,66px)] leading-[.98] font-bold tracking-[-.065em] uppercase [&>span]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[46px] max-[760px]:text-[clamp(48px,12vw,62px)]',
+  title: 'm-0 text-[clamp(46px,4.6vw,66px)] leading-[.98] font-bold tracking-[-.065em] uppercase [&_[data-emphasis]]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[46px] max-[760px]:text-[clamp(48px,12vw,62px)]',
   description: 'mt-[26px] text-[15px] leading-[1.7] text-muted max-[760px]:mt-[22px] max-[760px]:max-w-[290px]',
   desktopBreak: 'max-[1000px]:hidden',
   contact: 'mt-8 max-[760px]:mt-[25px] [&_p]:mb-3 [&_p]:text-xs [&_p]:text-[#686c5f] [&_a]:inline-flex [&_a]:min-h-10 [&_a]:items-center [&_a]:justify-between [&_a]:gap-10 [&_a]:border-b [&_a]:border-ink [&_a]:pb-2 [&_a]:text-[13px] [&_a]:font-semibold [&_a:hover]:border-[#657438] [&_a:hover]:text-olive [&_a:focus-visible]:outline-olive',
@@ -48,9 +50,9 @@ export default function Faq() {
   return (
     <section id="faq" className={styles.section} aria-labelledby="faq-title">
       <div className={styles.inner}>
-        <div className={styles.introduction}>
-          <p className={styles.eyebrow}><span aria-hidden="true">06 /</span> The details</p>
-          <h2 id="faq-title" className={styles.title}>Before we<br /><span>get started.</span></h2>
+        <div data-motion="intro" className={styles.introduction}>
+          <p data-text="eyebrow" className={styles.eyebrow}><span aria-hidden="true">06 /</span> The details</p>
+          <h2 data-text="heading" id="faq-title" className={styles.title}><RevealLine>Before we</RevealLine><RevealLine index={1}><span data-emphasis>get started.</span></RevealLine></h2>
           <p className={styles.description}>A little more about the process,<br className={styles.desktopBreak} /> the packages, and working with me.</p>
           <div className={styles.contact}>
             <p>Something else on your mind?</p>
@@ -63,7 +65,7 @@ export default function Faq() {
           </div>
         </div>
 
-        <div className={styles.questions}>
+        <div data-motion="faq" className={styles.questions}>
           {faqs.map(({ question, answer }, index) => (
             <div key={question} className={styles.item} data-open={openIndex === index}>
               <h3>

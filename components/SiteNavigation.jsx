@@ -125,7 +125,7 @@ export default function SiteNavigation() {
   const menuButton = (
       <button ref={trigger} type="button" className={`${styles.trigger} ${mounted ? styles.fixedTrigger : ""}`} onClick={openMenu}
         aria-label="Open menu" aria-expanded={open} aria-controls="site-navigation" aria-haspopup="dialog">
-        <span className={styles.triggerLabel}>Menu</span>
+        {/* <span className={styles.triggerLabel}>Menu</span> */}
         <span className={styles.bars} aria-hidden="true"><span /><span /></span>
       </button>
   );

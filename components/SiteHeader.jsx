@@ -50,7 +50,7 @@ export default function SiteHeader() {
               <Asterisk className="h-4 w-4 text-brand-accent" />
             </span>
           </Link>
-          <p className="hidden text-[10px] uppercase leading-relaxed tracking-[0.2em] text-white lg:block">
+          <p className="hidden text-[10px] uppercase text-center leading-relaxed tracking-[0.2em] text-white lg:block">
             Independent spirit.
             <br />
             Louisville, Kentucky.

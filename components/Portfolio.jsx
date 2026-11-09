@@ -1,9 +1,11 @@
 'use client';
 
+import RevealLine from './RevealLine';
+
 import { useEffect, useRef, useState } from 'react';
 const styles = {
   section: 'section-space bg-white text-ink [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-[5px] [&_:focus-visible]:outline-ink',
-  inner: 'mx-auto max-w-[1180px] [&_h2]:text-center [&_h2]:text-[clamp(44px,5.2vw,76px)] [&_h2]:leading-[.99] [&_h2]:font-bold [&_h2]:tracking-[-.065em] [&_h2]:uppercase [&_h2_span]:font-editorial [&_h2_span]:font-normal [&_h2_span]:tracking-[-.055em] [&_h2_span]:normal-case [&_h2_span]:italic max-[480px]:[&_h2]:text-[43px]',
+  inner: 'mx-auto max-w-[1180px] [&_h2]:text-center [&_h2]:text-[clamp(44px,5.2vw,76px)] [&_h2]:leading-[.99] [&_h2]:font-bold [&_h2]:tracking-[-.065em] [&_h2]:uppercase [&_h2_em]:font-editorial [&_h2_em]:font-normal [&_h2_em]:tracking-[-.055em] [&_h2_em]:normal-case [&_h2_em]:italic max-[480px]:[&_h2]:text-[43px]',
   eyebrow: 'mb-[25px] text-center text-[10px] font-semibold tracking-[.17em] uppercase',
   description: 'mx-auto mt-6 max-w-[560px] text-center text-[15px] leading-[1.6]',
   grid: 'mt-16 grid grid-cols-4 items-start gap-5 max-[900px]:grid-cols-2 max-[900px]:gap-x-[18px] max-[900px]:gap-y-[30px] max-[480px]:mt-12 max-[480px]:gap-x-3 max-[480px]:gap-y-7',
@@ -37,7 +39,7 @@ function PortfolioVideo({ clip }) {
   }, [clip.file]);
 
   return (
-    <figure className={styles.clip}>
+    <figure data-motion="clip" className={styles.clip}>
       <div className={styles.videoFrame}>
         <video ref={video} muted loop playsInline preload="none" poster={`/images/portfolio/${clip.file}.jpg`} aria-label={clip.description} />
       </div>
@@ -49,9 +51,9 @@ function PortfolioVideo({ clip }) {
 export default function Portfolio() {
   return (
     <section id="work" className={styles.section} aria-labelledby="work-title">
-      <div className={styles.inner}>
-        <p className={styles.eyebrow}>03 / In the frame</p>
-        <h2 id="work-title">Your business,<br /><span>seen up close.</span></h2>
+      <div data-motion="intro" className={styles.inner}>
+        <p data-text="eyebrow" className={styles.eyebrow}>03 / In the frame</p>
+        <h2 data-text="heading" id="work-title"><RevealLine>Your business,</RevealLine><RevealLine index={1}><em>seen up close.</em></RevealLine></h2>
         <p className={styles.description}>From the first conversation to the details of a treatment, here’s how I bring a business’s everyday work into the frame.</p>
         <div className={styles.grid}>{clips.map(clip => <PortfolioVideo key={clip.file} clip={clip} />)}</div>
         <div className={styles.footer}>

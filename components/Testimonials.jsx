@@ -1,5 +1,7 @@
 'use client';
 
+import RevealLine from './RevealLine';
+
 import { useState } from 'react';
 import BackgroundVideo from './BackgroundVideo';
 const styles = {
@@ -11,7 +13,7 @@ const styles = {
   carousel: 'mt-12 grid grid-cols-[48px_minmax(0,720px)_48px] items-center justify-center gap-[42px] max-[760px]:mt-10 max-[760px]:grid-cols-2 max-[760px]:gap-[22px]',
   arrow: 'h-[46px] w-[46px] cursor-pointer rounded-full bg-brand-accent text-[23px] text-ink transition-[transform,background] duration-200 hover:scale-[1.08] hover:bg-white motion-reduce:transition-none max-[760px]:justify-self-end max-[760px]:last:justify-self-start',
   frame: 'rounded-3xl bg-olive bg-[conic-gradient(#e8ff8c_25%,transparent_0_50%,#e8ff8c_0_75%,transparent_0)] bg-size-[68px_68px] p-3.5 max-[760px]:col-span-full max-[760px]:row-start-1 max-[760px]:rounded-[19px] max-[760px]:bg-size-[48px_48px] max-[760px]:p-2.5',
-  card: 'flex min-h-[340px] items-center rounded-[14px] bg-paper px-12 pt-[38px] pb-[42px] text-left text-ink [&_blockquote]:text-[clamp(18px,1.8vw,24px)] [&_blockquote]:leading-[1.55] [&_blockquote]:tracking-[-.025em] max-[760px]:min-h-[375px] max-[760px]:rounded-[10px] max-[760px]:px-[25px] max-[760px]:py-[30px] max-[760px]:[&_blockquote]:text-lg',
+  card: 'flex min-h-[400px] items-center rounded-[14px] bg-paper px-12 pt-[38px] pb-[42px] text-left text-ink [&_blockquote]:text-[clamp(18px,1.8vw,24px)] [&_blockquote]:leading-[1.55] [&_blockquote]:tracking-[-.025em] max-[760px]:min-h-[430px] max-[760px]:rounded-[10px] max-[760px]:px-[25px] max-[760px]:py-[30px] max-[760px]:[&_blockquote]:text-lg',
   quoteContent: 'w-full motion-safe:animate-[quote-arrive_.3s_ease-out]',
   quoteMark: 'mb-5 block font-editorial text-[64px] leading-[.7] text-[#667345]',
   author: 'mt-7 text-[11px] font-bold tracking-[.11em] uppercase',
@@ -23,8 +25,36 @@ const styles = {
 // Verbatim excerpts from the client messages supplied by Hasnain.
 // The collaboration announcement is not presented as a completed-work review.
 const testimonials = [
-  { quote: 'Also, I have received so many messages and texts from your IG posts and stories!!! People are loving it. You have done such an incredible job Parker.', author: 'Client feedback', source: 'Shared on Instagram' },
-  { quote: 'So much gratitude to @parker.wheatley for making dreams come true and magic happen!', author: 'Curated Bronze', source: 'Shared on Instagram' },
+  {
+    "quote": "Parker makes the entire process feel so personal. He takes the time to understand our business, listens to our vision, and brings ideas we wouldn’t have thought of ourselves. He’s creative, dependable, and truly such a joy to work with!",
+    "author": "Emily",
+    "source": "Shared on Instagram"
+  },
+  {
+    "quote": "Social media used to feel like another thing on our never ending todo list. Having Parker manage our content has given us so much time back. Everything is organized, intentional, and consistently reflects our brand.",
+    "author": "Maddie",
+    "source": "Shared on Instagram"
+  },
+  {
+    "quote": "Working with Theparkercollective has made such a difference in our online presence. Parker understands our brand, brings fresh ideas to the table, and makes social media feel effortless. We couldn’t be happier with the content and creativity!",
+    "author": "CC",
+    "source": "Shared on Instagram"
+  },
+  {
+    "quote": "You did an incredible job Parker. You should be so proud of what you created and how professional and detailed your products are! I am thoroughly impressed! Thank you!!!",
+    "author": "Claire",
+    "source": "Shared on Instagram"
+  },
+  {
+    "quote": "Also, I have received so many messages and stories!!! People are loving it. You have done such an incredible job Parker. You are a fucking kick ass social media manager!!!",
+    "author": "Amanda",
+    "source": "Shared on Instagram"
+  },
+  {
+    "quote": "So much gratitude to @parker.wheatley for making dreams come true and magic happen!",
+    "author": "Curated Bronze",
+    "source": "Shared on Instagram"
+  }
 ];
 
 export default function Testimonials() {
@@ -40,12 +70,12 @@ export default function Testimonials() {
         className={styles.background}
       />
       <div className={styles.shade} />
-      <div className={styles.inner}>
-        <p className={styles.eyebrow}>04 / Client feedback</p>
-        <h2 id="testimonials-title">What it’s like to<br /><em>work together.</em></h2>
+      <div data-motion="intro" className={styles.inner}>
+        <p data-text="eyebrow" className={styles.eyebrow}>04 / Client feedback</p>
+        <h2 data-text="heading" id="testimonials-title"><RevealLine>What it’s like to</RevealLine><RevealLine index={1}><em>work together.</em></RevealLine></h2>
         <div className={styles.carousel}>
           <button type="button" className={styles.arrow} onClick={() => change(-1)} aria-label="Previous testimonial" aria-controls="testimonial-quote">←</button>
-          <div className={styles.frame}>
+          <div data-motion="review" className={styles.frame}>
             <div id="testimonial-quote" className={styles.card} aria-live="polite" aria-atomic="true">
               <div key={active} className={styles.quoteContent}>
                 <span className={styles.quoteMark} aria-hidden="true">“</span>
