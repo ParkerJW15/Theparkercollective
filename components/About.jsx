@@ -70,21 +70,21 @@ export default function About() {
           </div>
           <p className={styles.intro}><TypewriterText>Your social media partner,<br />from the first idea to the final post.</TypewriterText></p>
           <div className={styles.body}>
-            <p><TypewriterText>
+            <p>
               I started The Parker Collective to give businesses the creative
               support and clear direction their social media deserves.
-            </TypewriterText></p>
-            <p><TypewriterText>
+            </p>
+            <p>
               Based in Louisville, I’ve spent nearly two years working with
               businesses across different industries. I love finding the details
               that make a brand its own, then turning them into content people
               can connect with.
-            </TypewriterText></p>
-            <p><TypewriterText>
+            </p>
+            <p>
               We’ll start with your business, your audience, and what you want
               to achieve. From there, I’ll shape a strategy and content that
               sound, look, and feel like you.
-            </TypewriterText></p>
+            </p>
           </div>
           <a href="#inquiry" className={styles.contact}>
             Let’s talk about your business

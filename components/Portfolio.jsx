@@ -54,7 +54,7 @@ function PortfolioVideo({ clip }) {
       <div className={styles.videoFrame}>
         <BackgroundVideo src={`/videos/portfolio/${clip.file}.mp4`} decorative={false} poster={`/images/portfolio/${clip.file}.jpg`} aria-label={clip.description} />
       </div>
-      <figcaption><span>{clip.title}</span><span className="font-editorial"><TypewriterText text={clip.description} /></span></figcaption>
+      <figcaption><span>{clip.title}</span><span className="font-editorial">{clip.description}</span></figcaption>
     </figure>
   );
 }

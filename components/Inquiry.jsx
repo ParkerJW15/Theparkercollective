@@ -3,7 +3,8 @@
 import RevealLine from './RevealLine';
 import TypewriterText from './TypewriterText';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { sendInquiry } from '@/lib/emailjs.mjs';
 import BackgroundVideo from './BackgroundVideo';
 import Image from 'next/image';
 const styles = {
@@ -27,22 +28,26 @@ const styles = {
 };
 
 export default function Inquiry() {
-  const [draftOpened, setDraftOpened] = useState(false);
+  const [status, setStatus] = useState('idle');
+  const requestPending = useRef(false);
 
-
-  function openEmailDraft(event) {
+  async function submitInquiry(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const body = [
-      `Name: ${data.get('name')}`,
-      `Email: ${data.get('email')}`,
-      `Business: ${data.get('business')}`,
-      `Website / Instagram: ${data.get('social') || 'Not provided'}`,
-      `Interested in: ${data.get('package')}`,
-      '', 'About my business and goals:', data.get('message'),
-    ].join('\n');
-    window.location.href = `mailto:theparkercollective.co@gmail.com?subject=${encodeURIComponent(`Website inquiry — ${data.get('business')}`)}&body=${encodeURIComponent(body)}`;
-    setDraftOpened(true);
+    if (requestPending.current) return;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    requestPending.current = true;
+    setStatus('sending');
+    try {
+      await sendInquiry(data);
+      form.reset();
+      setStatus('success');
+    } catch {
+      // Keep the visitor's entries so they can retry or use the direct email link.
+      setStatus('error');
+    } finally {
+      requestPending.current = false;
+    }
   }
 
   return (
@@ -57,10 +62,10 @@ export default function Inquiry() {
           <p className={styles.description}><TypewriterText>Tell me what you do and where you need support. We’ll start with your goals, talk through your options, and find the right way to work together.</TypewriterText></p>
           <a className={styles.email} href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com <span aria-hidden="true">↗</span></a>
         </div>
-        <form data-motion="form" className={styles.form} onSubmit={openEmailDraft}>
+        <form data-motion="form" className={styles.form} onSubmit={submitInquiry} aria-busy={status === 'sending'}>
           <p data-text="heading-copy" className={styles.formHeading}>Tell me about your business.</p>
-          <p className={styles.requiredNote}><TypewriterText>Not sure which package fits? We can work that out together.<br />Fields marked * are required.</TypewriterText></p>
-          <div className={styles.fields}>
+          <p className={styles.requiredNote}>Not sure which package fits? We can work that out together.<br />Fields marked * are required.</p>
+          <fieldset className={styles.fields} disabled={status === 'sending'}>
             <label>Your name *<input name="name" autoComplete="name" required maxLength={100} placeholder="First and last name" /></label>
             <label>Email address *<input name="email" type="email" autoComplete="email" required maxLength={150} placeholder="you@yourbusiness.com" /></label>
             <label>Business name *<input name="business" autoComplete="organization" required maxLength={120} placeholder="Your business" /></label>
@@ -77,10 +82,15 @@ export default function Inquiry() {
               </select>
             </label>
             <label className={styles.full}>Tell me about your business and goals *<textarea name="message" required rows={4} maxLength={1200} placeholder="What do you do, and what would you love some support with?" /></label>
+          </fieldset>
+          <p className={styles.deliveryNote}>Your inquiry goes straight to Parker. He’ll reply by email.</p>
+          <button type="submit" className={`${styles.submit} disabled:cursor-wait disabled:opacity-60`} disabled={status === 'sending'}>
+            {status === 'sending' ? 'Sending…' : 'Send inquiry'} <span aria-hidden="true">↗</span>
+          </button>
+          <div role="status" aria-live="polite" aria-atomic="true">
+            {status === 'success' && <p className={styles.status}>Thanks! Your inquiry has been sent. Parker will be in touch by email.</p>}
+            {status === 'error' && <p className={styles.status}>Your inquiry couldn’t be sent. Your details are still here—please try again, or email <a href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com</a>.</p>}
           </div>
-          <p className={styles.deliveryNote}><TypewriterText>Your email app will open with your inquiry ready to send.</TypewriterText></p>
-          <button type="submit" className={styles.submit}>Continue by email <span aria-hidden="true">↗</span></button>
-          {draftOpened && <p className={styles.status} role="status">Your inquiry hasn’t been sent yet. Send the draft in your email app. If it didn’t open, email <a href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com</a>.</p>}
         </form>
       </div>
     </section>

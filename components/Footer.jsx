@@ -1,4 +1,3 @@
-import TypewriterText from './TypewriterText';
 import Image from 'next/image';
 
 const links = [
@@ -19,7 +18,7 @@ export default function Footer() {
             <a href="#main" aria-label="The Parker Collective — back to top" className="mx-auto block focus-visible:outline-ink"><Image src="/images/brand/parker-collective-logo-transparent.png" alt="The Parker Collective" width={280} height={280} sizes="(max-width: 760px) 210px, 280px" className="size-[280px] object-contain max-[760px]:size-[210px]" /></a>
             <div className="justify-self-end text-right max-[760px]:justify-self-center max-[760px]:text-center">
               <p className="text-[10px] tracking-[.15em] uppercase">Louisville, Kentucky</p>
-              <p className="font-editorial mt-3 text-sm leading-[1.7]"><TypewriterText>Social media management.<br />Content creation. Strategy.</TypewriterText></p>
+              <p className="font-editorial mt-3 text-sm leading-[1.7]">Social media management.<br />Content creation. Strategy.</p>
               <div className="mt-5 flex justify-end gap-5 text-xs max-[760px]:justify-center">
                 <a href="https://www.instagram.com/theparkercollectiveco/" target="_blank" rel="noopener noreferrer" className="py-3 underline-offset-4 hover:underline focus-visible:outline-ink">Instagram ↗</a>
                 <a href="mailto:theparkercollective.co@gmail.com" className="py-3 underline-offset-4 hover:underline focus-visible:outline-ink">Email ↗</a>

@@ -1,7 +1,6 @@
 'use client';
 
 import RevealLine from './RevealLine';
-import TypewriterText from './TypewriterText';
 
 import { useState } from 'react';
 const styles = {
@@ -54,9 +53,9 @@ export default function Faq() {
         <div data-motion="intro" className={styles.introduction}>
           <p data-text="eyebrow" className={styles.eyebrow}><span aria-hidden="true">06 /</span> The details</p>
           <h2 data-text="heading" id="faq-title" className={styles.title}><RevealLine>Before we</RevealLine><RevealLine index={1}><span data-emphasis>get started.</span></RevealLine></h2>
-          <p className={styles.description}><TypewriterText>A little more about the process,<br className={styles.desktopBreak} /> the packages, and working with me.</TypewriterText></p>
+          <p className={styles.description}>A little more about the process,<br className={styles.desktopBreak} /> the packages, and working with me.</p>
           <div className={styles.contact}>
-            <p className="font-editorial"><TypewriterText>Something else on your mind?</TypewriterText></p>
+            <p className="font-editorial">Something else on your mind?</p>
             <a href="mailto:theparkercollective.co@gmail.com">
               Ask Parker
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -77,7 +76,7 @@ export default function Faq() {
               </button>
               </h3>
               <div className={styles.answerPanel} id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} aria-hidden={openIndex !== index} inert={openIndex !== index}>
-                <div className={styles.answerClip}><div className={styles.answer}><p><TypewriterText text={answer} /></p></div></div>
+                <div className={styles.answerClip}><div className={styles.answer}><p>{answer}</p></div></div>
               </div>
             </div>
           ))}

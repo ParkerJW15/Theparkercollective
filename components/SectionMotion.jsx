@@ -55,22 +55,11 @@ export default function SectionMotion() {
     }, { rootMargin: '160px 0px' });
     document.querySelectorAll('[data-marquee]').forEach(element => tickerObserver.observe(element));
     document.addEventListener('visibilitychange', updateTickers);
-    // Register new testimonials/status content and answers revealed by the FAQ.
-    const contentObserver = new MutationObserver(records => {
-      for (const record of records) {
-        if (record.type === 'attributes') observeTree(record.target);
-        else record.addedNodes.forEach(observeTree);
-      }
-    });
-    contentObserver.observe(document.getElementById('smooth-content') || document.body, {
-      childList: true, subtree: true, attributes: true, attributeFilter: ['inert'],
-    });
     observe();
     preference.addEventListener('change', observe);
     return () => {
       observer?.disconnect();
       tickerObserver.disconnect();
-      contentObserver.disconnect();
       document.removeEventListener('visibilitychange', updateTickers);
       preference.removeEventListener('change', observe);
     };

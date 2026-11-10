@@ -48,9 +48,9 @@ export default function Packages() {
               <div aria-hidden="true" className={`pointer-events-none absolute inset-0 -z-1 mix-blend-multiply ${styles[item.name.toLowerCase()]}`} />
               <div className={styles.cardTop}><span>Social media management</span><span>0{index + 1} / 03</span></div>
               <h3 data-text="heading"><RevealLine>{item.name}</RevealLine></h3>
-              <p className={styles.description}><TypewriterText>{item.description}</TypewriterText></p>
+              <p className={styles.description}>{item.description}</p>
               <p data-package-rule className={styles.includes}>What’s included</p>
-              <ul className="font-editorial">{item.features.map(feature => <li key={feature}><span aria-hidden="true">↗</span><TypewriterText text={feature} /></li>)}</ul>
+              <ul className="font-editorial">{item.features.map(feature => <li key={feature}><span aria-hidden="true">↗</span>{feature}</li>)}</ul>
               <a className={styles.cta} href="#inquiry">Ask about {item.name}<span aria-hidden="true">↗</span></a>
             </article>
           ))}

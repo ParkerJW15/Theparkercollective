@@ -48,7 +48,7 @@ export default function ConversionSection() {
           <p data-text="heading-copy" className="text-[clamp(28px,3vw,40px)] leading-[1.15] font-bold tracking-[-.045em]">Hand over the content.<br />Keep your time for your business.</p>
           <p className="font-editorial mx-auto mt-5 max-w-[510px] text-[15px] leading-[1.8] text-muted"><TypewriterText>I bring strategy, content creation, and ongoing support together around your goals. You get a more consistent presence and a clearer picture of what’s working.</TypewriterText></p>
           <a href="#packages" className="mt-8 inline-flex min-h-14 items-center justify-between gap-10 bg-ink px-7 py-4 text-xs font-semibold tracking-[.04em] text-brand-accent uppercase transition-colors hover:bg-olive focus-visible:outline-ink motion-reduce:transition-none">Explore the packages <span aria-hidden="true" className="text-xl">↘</span></a>
-          <p className="font-editorial mt-4 text-xs text-muted"><TypewriterText>Not sure where to start? <a href="#inquiry" className="underline underline-offset-4 hover:text-ink focus-visible:outline-ink">Tell me what you need.</a></TypewriterText></p>
+          <p className="font-editorial mt-4 text-xs text-muted">Not sure where to start? <a href="#inquiry" className="underline underline-offset-4 hover:text-ink focus-visible:outline-ink">Tell me what you need.</a></p>
         </div>
       </div>
     </section>

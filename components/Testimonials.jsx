@@ -1,7 +1,6 @@
 'use client';
 
 import RevealLine from './RevealLine';
-import TypewriterText from './TypewriterText';
 
 import { useState } from 'react';
 import BackgroundVideo from './BackgroundVideo';
@@ -69,7 +68,7 @@ export default function Testimonials() {
             <div id="testimonial-quote" className={styles.card} aria-live="polite" aria-atomic="true">
               <div key={active} className={styles.quoteContent}>
                 <span className={styles.quoteMark} aria-hidden="true">“</span>
-                <blockquote className="font-editorial"><TypewriterText text={review.quote} /></blockquote>
+                <blockquote className="font-editorial">{review.quote}</blockquote>
                 <p className={styles.author}>{review.author}</p>
                 <p className={styles.source}>{review.source}</p>
               </div>
