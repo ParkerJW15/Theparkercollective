@@ -17,7 +17,7 @@ const styles = {
   cardTop: 'flex justify-between gap-5 text-[9px] font-semibold tracking-[.12em] uppercase max-[400px]:gap-2.5 max-[400px]:text-[8px]',
   description: 'font-editorial mt-[18px] max-w-[380px] text-base leading-[1.6]',
   includes: 'mt-8 pt-6 text-[10px] font-semibold tracking-[.13em] uppercase',
-  cta: 'mx-auto mt-8 flex min-h-14 w-3/5 items-center justify-center gap-2 bg-ink px-3 py-3 text-center text-[11px] font-semibold tracking-[.04em] text-white uppercase transition-colors hover:bg-olive focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none [&>span]:text-[22px] [&>span]:leading-none max-[480px]:[&>span]:hidden',
+  cta: 'mx-auto mt-8 flex min-h-14 w-3/5 items-center justify-center gap-2 bg-ink px-3 py-3 text-center text-[11px] font-semibold tracking-[.04em] text-white uppercase transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink motion-reduce:transition-none [&>span]:text-[22px] [&>span]:leading-none max-[480px]:[&>span]:hidden',
 };
 
 // Package inclusions transcribed from Parker's supplied Instagram carousel.

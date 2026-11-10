@@ -57,7 +57,7 @@ export default function Inquiry() {
       <div className={styles.overlay} />
       <div className={styles.inner}>
         <div data-motion="inquiry" className={styles.intro}>
-          <p data-text="eyebrow" className={styles.eyebrow}>07 / Work with Parker</p>
+          <p data-text="eyebrow" className={styles.eyebrow}>07 / Work with me</p>
           <h2 data-text="heading" id="inquiry-title"><RevealLine>Let’s talk</RevealLine><RevealLine index={1}>about your</RevealLine><RevealLine index={2}><span data-emphasis>socials.</span></RevealLine></h2>
           <p className={styles.description}><TypewriterText>Tell me what you do and where you need support. We’ll start with your goals, talk through your options, and find the right way to work together.</TypewriterText></p>
           <a className={styles.email} href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com <span aria-hidden="true">↗</span></a>
@@ -83,13 +83,13 @@ export default function Inquiry() {
             </label>
             <label className={styles.full}>Tell me about your business and goals *<textarea name="message" required rows={4} maxLength={1200} placeholder="What do you do, and what would you love some support with?" /></label>
           </fieldset>
-          <p className={styles.deliveryNote}>Your inquiry goes straight to Parker. He’ll reply by email.</p>
+          <p className={styles.deliveryNote}>Your inquiry comes straight to me. I’ll reply by email.</p>
           <button type="submit" className={`${styles.submit} disabled:cursor-wait disabled:opacity-60`} disabled={status === 'sending'}>
             {status === 'sending' ? 'Sending…' : 'Send inquiry'} <span aria-hidden="true">↗</span>
           </button>
           <div role="status" aria-live="polite" aria-atomic="true">
-            {status === 'success' && <p className={styles.status}>Thanks! Your inquiry has been sent. Parker will be in touch by email.</p>}
-            {status === 'error' && <p className={styles.status}>Your inquiry couldn’t be sent. Your details are still here—please try again, or email <a href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com</a>.</p>}
+            {status === 'success' && <p className={styles.status}>Thanks for reaching out! Your inquiry has been sent. I’ll be in touch by email.</p>}
+            {status === 'error' && <p className={styles.status}>Your inquiry couldn’t be sent. Your details are still here—please try again, or email me at <a href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com</a>.</p>}
           </div>
         </form>
       </div>
