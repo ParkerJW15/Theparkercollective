@@ -11,7 +11,7 @@ function textLength(nodes) {
 export default function TypewriterText({ text, children, offset = 0, trigger = 'viewport' }) {
   const content = text ?? children;
   let characterIndex = offset;
-  const step = Math.min(22, 2400 / Math.max(1, textLength(content)));
+  const step = Math.min(18, 2000 / Math.max(1, textLength(content)));
 
   function renderNodes(nodes) {
     return Children.map(nodes, node => {

@@ -30,7 +30,7 @@ export default function ConversionSection() {
         <div data-motion="intro" className="mx-auto max-w-[1000px] text-center">
           <p className="mb-6 text-[10px] font-semibold tracking-[.18em] text-olive uppercase">01 / Sound familiar?</p>
           <h2 data-text="heading" id="why-parker-title" className="text-[clamp(36px,4.2vw,60px)] leading-[1.02] font-bold tracking-[-.06em] uppercase"><RevealLine>Too much to do.</RevealLine><RevealLine index={1}>Too little time <span className="inline-block shadow-[inset_0_-.17em_0_#e8ff8c]">to post.</span></RevealLine></h2>
-          <p className="font-editorial mx-auto mt-7 max-w-[460px] text-base leading-[1.75] text-muted"><TypewriterText>Between looking after clients and running the business, finding time to plan, film, and post can feel like a job of its own.</TypewriterText></p>
+          <p className="font-editorial mx-auto mt-7 max-w-[460px] text-base leading-[1.75] text-muted">Between looking after clients and running the business, finding time to plan, film, and post can feel like a job of its own.</p>
         </div>
         <div data-motion="notes" className="mt-16 grid grid-cols-3 gap-6 max-[760px]:mx-auto max-[760px]:max-w-[380px] max-[760px]:grid-cols-1 max-[760px]:gap-8">
           {concerns.map(item => (
@@ -47,7 +47,7 @@ export default function ConversionSection() {
         <div data-motion="bridge" className="mx-auto mt-24 max-w-[620px] text-center max-[760px]:mt-12">
           <p data-text="heading-copy" className="text-[clamp(28px,3vw,40px)] leading-[1.15] font-bold tracking-[-.045em]">Hand over the content.<br />Keep your time for your business.</p>
           <p className="font-editorial mx-auto mt-5 max-w-[510px] text-[15px] leading-[1.8] text-muted"><TypewriterText>I bring strategy, content creation, and ongoing support together around your goals. You get a more consistent presence and a clearer picture of what’s working.</TypewriterText></p>
-          <a href="#packages" className="mt-8 inline-flex min-h-14 items-center justify-between gap-10 bg-ink px-7 py-4 text-xs font-semibold tracking-[.04em] text-brand-accent uppercase transition-colors hover:bg-olive focus-visible:outline-ink motion-reduce:transition-none">Explore the packages <span aria-hidden="true" className="text-xl">↘</span></a>
+          <a href="#packages" className="mt-8 inline-flex min-h-14 items-center justify-between gap-10 bg-ink px-7 py-4 text-xs font-semibold tracking-[.04em] text-brand-accent uppercase transition-colors hover:bg-olive focus-visible:outline-ink motion-reduce:transition-none max-[760px]:mx-auto max-[760px]:flex max-[760px]:w-1/2 max-[760px]:max-w-[240px] max-[760px]:justify-center max-[760px]:gap-2 max-[760px]:px-3 max-[760px]:text-center max-[760px]:[&>span]:hidden">Explore the packages <span aria-hidden="true" className="text-xl">↘</span></a>
           <p className="font-editorial mt-4 text-xs text-muted">Not sure where to start? <a href="#inquiry" className="underline underline-offset-4 hover:text-ink focus-visible:outline-ink">Tell me what you need.</a></p>
         </div>
       </div>

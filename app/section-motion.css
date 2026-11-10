@@ -107,7 +107,7 @@
 @media (prefers-reduced-motion: no-preference) {
   [data-motion="note"][data-entered] .typewriter-character {
     animation: typewriter-character 1ms steps(1, end) backwards;
-    animation-delay: calc(650ms + var(--type-index) * 22ms);
+    animation-delay: calc(650ms + var(--type-index) * 18ms);
   }
 }
 @keyframes typewriter-character {
@@ -119,6 +119,6 @@
 @media (prefers-reduced-motion: no-preference) {
   [data-typewriter="viewport"][data-entered] .typewriter-character {
     animation: typewriter-character 1ms steps(1, end) backwards;
-    animation-delay: calc(120ms + var(--type-index) * var(--type-step, 22ms));
+    animation-delay: calc(120ms + var(--type-index) * var(--type-step, 18ms));
   }
 }

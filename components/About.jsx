@@ -20,7 +20,7 @@ const styles = {
   title: 'min-w-0 text-[clamp(54px,5.4vw,78px)] leading-[.95] font-bold tracking-[-.065em] uppercase [&_[data-emphasis]]:text-ink [&_[data-emphasis]]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[56px] max-[760px]:text-[clamp(54px,14vw,72px)]',
   intro: 'font-editorial mb-6 text-xl leading-[1.45] max-[1000px]:text-lg',
   body: 'font-editorial text-[15px] leading-[1.8] text-muted [&_p+p]:mt-5 max-[1000px]:text-sm max-[760px]:text-[15px]',
-  contact: 'mt-8 inline-flex min-h-[54px] items-center justify-between gap-9 bg-brand-accent px-6 py-[15px] text-[11px] font-bold tracking-[.035em] text-black uppercase transition-colors hover:bg-ink hover:text-brand-accent focus-visible:outline-ink motion-reduce:transition-none [&_svg]:transition-transform [&_svg]:duration-300 hover:[&_svg]:translate-x-[3px] hover:[&_svg]:-translate-y-[3px] motion-reduce:[&_svg]:transition-none max-[760px]:w-full',
+  contact: 'mt-8 inline-flex min-h-[54px] items-center justify-between gap-9 bg-brand-accent px-6 py-[15px] text-[11px] font-bold tracking-[.035em] text-black uppercase transition-colors hover:bg-ink hover:text-brand-accent focus-visible:outline-ink motion-reduce:transition-none [&_svg]:transition-transform [&_svg]:duration-300 hover:[&_svg]:translate-x-[3px] hover:[&_svg]:-translate-y-[3px] motion-reduce:[&_svg]:transition-none max-[760px]:mx-auto max-[760px]:flex max-[760px]:w-1/2 max-[760px]:max-w-[240px] max-[760px]:justify-center max-[760px]:gap-2 max-[760px]:px-3 max-[760px]:text-center max-[760px]:[&_svg]:hidden',
 };
 
 export default function About() {
