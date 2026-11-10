@@ -38,10 +38,10 @@ function Asterisk({ className = "" }) {
 
 export default function SiteHeader() {
   return (
-        <header data-site-header className="relative z-10 text-white flex items-center justify-between gap-5 px-[var(--page-gutter)] pt-9 pb-[30px] max-[900px]:py-[30px] max-[640px]:py-[27px]">
+        <header data-site-header className="relative z-10 text-white flex items-center justify-between gap-5 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] px-[var(--page-gutter)] pt-9 pb-[30px] max-[900px]:py-[30px] max-[640px]:py-[27px]">
           <Link
             href="/"
-            className="block text-[26px] leading-[.86] font-extrabold tracking-[-.065em] [&>span]:flex max-[640px]:text-[23px]"
+            className="block w-fit justify-self-start text-[26px] leading-[.86] font-extrabold tracking-[-.065em] [&>span]:flex max-[640px]:text-[23px]"
             aria-label="The Parker Collective home"
           >
             <span>the parker</span>
@@ -50,12 +50,11 @@ export default function SiteHeader() {
               <Asterisk className="h-4 w-4 text-brand-accent" />
             </span>
           </Link>
-          <p className="hidden text-[10px] uppercase text-center leading-relaxed tracking-[0.2em] text-white lg:block">
-            Independent spirit.
-            <br />
-            Louisville, Kentucky.
+          <p className="hidden flex-col items-center gap-1 text-center text-[10px] leading-[1.4] tracking-[0.2em] text-white uppercase lg:flex">
+            <span>Independent spirit.</span>
+            <span>Louisville, Kentucky.</span>
           </p>
-          <div className="flex items-center gap-6 max-[640px]:gap-4">
+          <div className="flex items-center justify-self-end gap-6 max-[640px]:gap-4">
             <a
               href={instagram}
               target="_blank"

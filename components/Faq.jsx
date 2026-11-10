@@ -1,6 +1,7 @@
 'use client';
 
 import RevealLine from './RevealLine';
+import TypewriterText from './TypewriterText';
 
 import { useState } from 'react';
 const styles = {
@@ -8,7 +9,7 @@ const styles = {
   inner: 'mx-auto grid max-w-[1180px] grid-cols-[minmax(0,.8fr)_minmax(0,1.35fr)] items-start gap-[clamp(48px,7vw,108px)] border-t border-[#cccec3] pt-[var(--section-space)] max-[1000px]:gap-10 max-[760px]:max-w-[520px] max-[760px]:grid-cols-1 max-[760px]:gap-[38px]',
   eyebrow: 'mb-6 flex items-center gap-[18px] text-[10px] font-semibold tracking-[.18em] text-olive uppercase [&>span]:text-[#686c5f] max-[760px]:mb-6 max-[760px]:text-[9px]',
   title: 'm-0 text-[clamp(46px,4.6vw,66px)] leading-[.98] font-bold tracking-[-.065em] uppercase [&_[data-emphasis]]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[46px] max-[760px]:text-[clamp(48px,12vw,62px)]',
-  description: 'mt-[26px] text-[15px] leading-[1.7] text-muted max-[760px]:mt-[22px] max-[760px]:max-w-[290px]',
+  description: 'font-editorial mt-[26px] text-[15px] leading-[1.7] text-muted max-[760px]:mt-[22px] max-[760px]:max-w-[290px]',
   desktopBreak: 'max-[1000px]:hidden',
   contact: 'mt-8 max-[760px]:mt-[25px] [&_p]:mb-3 [&_p]:text-xs [&_p]:text-[#686c5f] [&_a]:inline-flex [&_a]:min-h-10 [&_a]:items-center [&_a]:justify-between [&_a]:gap-10 [&_a]:border-b [&_a]:border-ink [&_a]:pb-2 [&_a]:text-[13px] [&_a]:font-semibold [&_a:hover]:border-[#657438] [&_a:hover]:text-olive [&_a:focus-visible]:outline-olive',
   questions: 'border-t border-[#aeb2a4]',
@@ -18,7 +19,7 @@ const styles = {
   symbol: "relative size-8 rounded-full border border-[#b6bbac] transition-[background,border-color] duration-200 before:absolute before:top-1/2 before:left-1/2 before:h-px before:w-3 before:-translate-1/2 before:bg-ink before:content-[''] after:absolute after:top-1/2 after:left-1/2 after:h-3 after:w-px after:-translate-1/2 after:bg-ink after:transition-[height] after:duration-200 after:content-[''] group-data-[open=true]/faq:border-transparent group-data-[open=true]/faq:bg-brand-accent group-data-[open=true]/faq:after:h-0 group-hover/faq:bg-brand-accent motion-reduce:transition-none motion-reduce:after:transition-none max-[760px]:size-[30px]",
   answerPanel: 'grid grid-rows-[0fr] opacity-0 transition-[grid-template-rows,opacity] duration-[450ms] ease-[cubic-bezier(.22,.68,0,1)] group-data-[open=true]/faq:grid-rows-[1fr] group-data-[open=true]/faq:opacity-100 motion-reduce:transition-none',
   answerClip: 'min-h-0 overflow-hidden',
-  answer: 'pr-[50px] pb-[27px] pl-[42px] text-[15px] leading-[1.8] text-muted max-[1000px]:pr-8 max-[1000px]:pl-9 max-[1000px]:text-sm max-[760px]:pr-2.5 max-[760px]:pb-[25px] max-[760px]:pl-[30px]',
+  answer: 'font-editorial pr-[50px] pb-[27px] pl-[42px] text-[15px] leading-[1.8] text-muted max-[1000px]:pr-8 max-[1000px]:pl-9 max-[1000px]:text-sm max-[760px]:pr-2.5 max-[760px]:pb-[25px] max-[760px]:pl-[30px]',
 };
 
 // Adapted from Parker's supplied Instagram FAQ carousel.
@@ -53,9 +54,9 @@ export default function Faq() {
         <div data-motion="intro" className={styles.introduction}>
           <p data-text="eyebrow" className={styles.eyebrow}><span aria-hidden="true">06 /</span> The details</p>
           <h2 data-text="heading" id="faq-title" className={styles.title}><RevealLine>Before we</RevealLine><RevealLine index={1}><span data-emphasis>get started.</span></RevealLine></h2>
-          <p className={styles.description}>A little more about the process,<br className={styles.desktopBreak} /> the packages, and working with me.</p>
+          <p className={styles.description}><TypewriterText>A little more about the process,<br className={styles.desktopBreak} /> the packages, and working with me.</TypewriterText></p>
           <div className={styles.contact}>
-            <p>Something else on your mind?</p>
+            <p className="font-editorial"><TypewriterText>Something else on your mind?</TypewriterText></p>
             <a href="mailto:theparkercollective.co@gmail.com">
               Ask Parker
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -76,7 +77,7 @@ export default function Faq() {
               </button>
               </h3>
               <div className={styles.answerPanel} id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} aria-hidden={openIndex !== index} inert={openIndex !== index}>
-                <div className={styles.answerClip}><div className={styles.answer}><p>{answer}</p></div></div>
+                <div className={styles.answerClip}><div className={styles.answer}><p><TypewriterText text={answer} /></p></div></div>
               </div>
             </div>
           ))}

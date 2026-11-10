@@ -6,6 +6,12 @@ export default function SectionMotion() {
   useEffect(() => {
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let observer;
+    const revealSelector = '[data-motion]:not([data-entered]), [data-text]:not([data-entered]), [data-typewriter="viewport"]:not([data-entered])';
+    const observeTree = root => {
+      if (!observer || preference.matches || root.nodeType !== 1) return;
+      if (root.matches(revealSelector)) observer.observe(root);
+      root.querySelectorAll(revealSelector).forEach(element => observer.observe(element));
+    };
     // Animate text blocks themselves, so long sections do not reveal copy too early.
     const textSelectors = [
       '[data-motion="intro"] > p', '[data-motion="bridge"] > p',
@@ -25,12 +31,12 @@ export default function SectionMotion() {
       if (preference.matches) return;
       observer = new IntersectionObserver(entries => {
         for (const entry of entries) {
-          if (!entry.isIntersecting) continue;
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.12 || entry.target.closest('[inert]')) continue;
           entry.target.setAttribute('data-entered', 'true');
           observer.unobserve(entry.target);
         }
       }, { threshold: 0.12 });
-      document.querySelectorAll('[data-motion]:not([data-entered]), [data-text]:not([data-entered])').forEach(element => observer.observe(element));
+      observeTree(document.body);
     };
 
     // Keep continuous ticker animations asleep while offscreen or in a hidden tab.
@@ -49,11 +55,22 @@ export default function SectionMotion() {
     }, { rootMargin: '160px 0px' });
     document.querySelectorAll('[data-marquee]').forEach(element => tickerObserver.observe(element));
     document.addEventListener('visibilitychange', updateTickers);
+    // Register new testimonials/status content and answers revealed by the FAQ.
+    const contentObserver = new MutationObserver(records => {
+      for (const record of records) {
+        if (record.type === 'attributes') observeTree(record.target);
+        else record.addedNodes.forEach(observeTree);
+      }
+    });
+    contentObserver.observe(document.getElementById('smooth-content') || document.body, {
+      childList: true, subtree: true, attributes: true, attributeFilter: ['inert'],
+    });
     observe();
     preference.addEventListener('change', observe);
     return () => {
       observer?.disconnect();
       tickerObserver.disconnect();
+      contentObserver.disconnect();
       document.removeEventListener('visibilitychange', updateTickers);
       preference.removeEventListener('change', observe);
     };

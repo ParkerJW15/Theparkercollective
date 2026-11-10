@@ -1,6 +1,7 @@
 'use client';
 
 import RevealLine from './RevealLine';
+import TypewriterText from './TypewriterText';
 
 import { useState } from 'react';
 import BackgroundVideo from './BackgroundVideo';
@@ -12,9 +13,9 @@ const styles = {
   eyebrow: 'mb-[25px] text-[10px] tracking-[.18em] uppercase',
   carousel: 'mt-12 grid grid-cols-[48px_minmax(0,720px)_48px] items-center justify-center gap-[42px] max-[760px]:mt-10 max-[760px]:grid-cols-2 max-[760px]:gap-[22px]',
   arrow: 'h-[46px] w-[46px] cursor-pointer rounded-full bg-brand-accent text-[23px] text-ink transition-[transform,background] duration-200 hover:scale-[1.08] hover:bg-white motion-reduce:transition-none max-[760px]:justify-self-end max-[760px]:last:justify-self-start',
-  frame: 'rounded-3xl bg-olive bg-[conic-gradient(#e8ff8c_25%,transparent_0_50%,#e8ff8c_0_75%,transparent_0)] bg-size-[68px_68px] p-3.5 max-[760px]:col-span-full max-[760px]:row-start-1 max-[760px]:rounded-[19px] max-[760px]:bg-size-[48px_48px] max-[760px]:p-2.5',
-  card: 'flex min-h-[400px] items-center rounded-[14px] bg-white px-12 pt-[38px] pb-[42px] text-left text-ink [&_blockquote]:text-[clamp(18px,1.8vw,24px)] [&_blockquote]:leading-[1.55] [&_blockquote]:tracking-[-.025em] max-[760px]:min-h-[430px] max-[760px]:rounded-[10px] max-[760px]:px-[25px] max-[760px]:py-[30px] max-[760px]:[&_blockquote]:text-lg',
-  quoteContent: 'w-full motion-safe:animate-[quote-arrive_.3s_ease-out]',
+  frame: 'rounded-3xl bg-olive review-frame p-3.5 max-[760px]:col-span-full max-[760px]:row-start-1 max-[760px]:rounded-[19px] max-[760px]:p-2.5',
+  card: 'flex min-h-[400px] items-center rounded-[14px] bg-white px-12 pt-[38px] pb-[42px] text-left text-ink [&_blockquote]:text-[clamp(18px,1.8vw,24px)] [&_blockquote]:leading-[1.55] [&_blockquote]:tracking-normal max-[760px]:min-h-[430px] max-[760px]:rounded-[10px] max-[760px]:px-[25px] max-[760px]:py-[30px] max-[760px]:[&_blockquote]:text-lg',
+  quoteContent: 'w-full',
   quoteMark: 'mb-5 block font-editorial text-[64px] leading-[.7] text-[#667345]',
   author: 'mt-7 text-[11px] font-bold tracking-[.11em] uppercase',
   source: 'mt-[7px] text-[11px] text-[#686c5f]',
@@ -68,7 +69,7 @@ export default function Testimonials() {
             <div id="testimonial-quote" className={styles.card} aria-live="polite" aria-atomic="true">
               <div key={active} className={styles.quoteContent}>
                 <span className={styles.quoteMark} aria-hidden="true">“</span>
-                <blockquote>{review.quote}</blockquote>
+                <blockquote className="font-editorial"><TypewriterText text={review.quote} /></blockquote>
                 <p className={styles.author}>{review.author}</p>
                 <p className={styles.source}>{review.source}</p>
               </div>

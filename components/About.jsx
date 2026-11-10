@@ -1,4 +1,5 @@
 import RevealLine from './RevealLine';
+import TypewriterText from './TypewriterText';
 import Image from 'next/image';
 const styles = {
   about: 'section-space overflow-hidden bg-white text-ink',
@@ -17,8 +18,8 @@ const styles = {
   headingRow: 'mb-8 flex items-center justify-between gap-[clamp(12px,2vw,24px)]',
   logo: 'relative aspect-[3/5] w-[clamp(44px,8vw,104px)] shrink-0 rotate-12 overflow-hidden',
   title: 'min-w-0 text-[clamp(54px,5.4vw,78px)] leading-[.95] font-bold tracking-[-.065em] uppercase [&_[data-emphasis]]:text-ink [&_[data-emphasis]]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[56px] max-[760px]:text-[clamp(54px,14vw,72px)]',
-  intro: 'mb-6 text-xl leading-[1.45] tracking-[-.025em] max-[1000px]:text-lg',
-  body: 'text-[15px] leading-[1.8] text-muted [&_p+p]:mt-5 max-[1000px]:text-sm max-[760px]:text-[15px]',
+  intro: 'font-editorial mb-6 text-xl leading-[1.45] max-[1000px]:text-lg',
+  body: 'font-editorial text-[15px] leading-[1.8] text-muted [&_p+p]:mt-5 max-[1000px]:text-sm max-[760px]:text-[15px]',
   contact: 'mt-8 inline-flex min-h-[54px] items-center justify-between gap-9 bg-brand-accent px-6 py-[15px] text-[11px] font-bold tracking-[.035em] text-black uppercase transition-colors hover:bg-ink hover:text-brand-accent focus-visible:outline-ink motion-reduce:transition-none [&_svg]:transition-transform [&_svg]:duration-300 hover:[&_svg]:translate-x-[3px] hover:[&_svg]:-translate-y-[3px] motion-reduce:[&_svg]:transition-none max-[760px]:w-full',
 };
 
@@ -67,23 +68,23 @@ export default function About() {
               <Image src="/images/brand/parker-collective-logo-transparent.png" alt="" width={2000} height={2000} sizes="520px" className="absolute top-1/2 left-1/2 h-auto w-[500%] max-w-none -translate-x-1/2 -translate-y-[47.75%]" />
             </div>
           </div>
-          <p className={styles.intro}>Your social media partner,<br />from the first idea to the final post.</p>
+          <p className={styles.intro}><TypewriterText>Your social media partner,<br />from the first idea to the final post.</TypewriterText></p>
           <div className={styles.body}>
-            <p>
+            <p><TypewriterText>
               I started The Parker Collective to give businesses the creative
               support and clear direction their social media deserves.
-            </p>
-            <p>
+            </TypewriterText></p>
+            <p><TypewriterText>
               Based in Louisville, I’ve spent nearly two years working with
               businesses across different industries. I love finding the details
               that make a brand its own, then turning them into content people
               can connect with.
-            </p>
-            <p>
+            </TypewriterText></p>
+            <p><TypewriterText>
               We’ll start with your business, your audience, and what you want
               to achieve. From there, I’ll shape a strategy and content that
               sound, look, and feel like you.
-            </p>
+            </TypewriterText></p>
           </div>
           <a href="#inquiry" className={styles.contact}>
             Let’s talk about your business

@@ -101,14 +101,33 @@ body {
   animation-play-state: paused;
 }
 
-/* Static, widely spaced linework keeps the footer light without extra animation. */
+/* Static vertical rules, spaced more closely on smaller screens. */
 .footer-lines {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='900' viewBox='0 0 640 900' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%23191b17' stroke-opacity='.12' stroke-width='1' vector-effect='non-scaling-stroke'%3E%3Cpath d='M110-20C70 110 160 200 118 340S65 550 125 690S150 820 108 920'/%3E%3Cpath d='M430-20C485 140 385 245 435 390S480 600 420 740S400 850 440 920'/%3E%3C/g%3E%3C/svg%3E");
-  background-size: 640px 100%;
+  background-image: linear-gradient(to right, rgb(25 27 23 / .12) 1px, transparent 1px);
+  background-size: 160px 100%;
   background-position: center;
   background-repeat: repeat-x;
 }
 
 @media (max-width: 900px) {
-  .footer-lines { background-size: 320px 100%; }
+  .footer-lines { background-size: 80px 100%; }
+}
+
+/* Give both vertical edges the same complete checker stripe, regardless of card width. */
+.review-frame {
+  --review-border: 14px;
+  --review-tile: 68px;
+  background-image:
+    linear-gradient(to bottom, var(--color-olive) 50%, var(--color-brand-accent) 50%),
+    linear-gradient(to bottom, var(--color-olive) 50%, var(--color-brand-accent) 50%),
+    conic-gradient(var(--color-brand-accent) 25%, transparent 0 50%, var(--color-brand-accent) 0 75%, transparent 0);
+  background-size:
+    var(--review-border) var(--review-tile),
+    var(--review-border) var(--review-tile),
+    var(--review-tile) var(--review-tile);
+  background-position: left top, right top, left top;
+  background-repeat: repeat-y, repeat-y, repeat;
+}
+@media (max-width: 760px) {
+  .review-frame { --review-border: 10px; --review-tile: 48px; }
 }

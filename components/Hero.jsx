@@ -1,4 +1,5 @@
 import RevealLine from './RevealLine';
+import TypewriterText from './TypewriterText';
 import SiteHeader from './SiteHeader';
 import BackgroundVideo from './BackgroundVideo';
 
@@ -72,12 +73,12 @@ export default function Hero() {
             <RevealLine index={2} className="text-brand-accent">Let it show.</RevealLine>
           </h1>
 
-          <div data-text="body">
-            <p className="mx-auto max-w-[520px] text-base leading-[1.75] text-white">
+          <div>
+            <p className="font-editorial mx-auto max-w-[520px] text-base leading-[1.75] text-white"><TypewriterText>
               Bring the care you put into your business to your social media.
               I create the content and build the plan, so you can spend less
               time wondering what to post.
-            </p>
+            </TypewriterText></p>
             <a
               href={contact}
               className="group mt-8 inline-flex min-h-14 items-center justify-between gap-9 bg-brand-accent px-6 text-xs font-bold text-black transition-colors hover:bg-white focus-visible:outline-offset-[6px] max-[640px]:w-full max-[640px]:max-w-[330px]"

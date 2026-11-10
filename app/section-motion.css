@@ -15,7 +15,6 @@
 
   /* Keep the staggered composition; bring each caption in from its own side. */
   [data-motion="clip"][data-entered] > div { animation: component-side-arrive .7s var(--motion-ease) backwards; }
-  [data-motion="clip"][data-entered] figcaption { animation: text-body-arrive .65s var(--motion-ease) .16s backwards; }
   [data-motion="clip"]:nth-child(even) { --component-offset: 32px; }
   [data-motion="clip"]:nth-child(odd) { --component-offset: -32px; }
   [data-motion="clip"] figcaption > span:first-child { transition: translate .25s ease; }
@@ -76,7 +75,7 @@
     animation: text-line-arrive var(--text-duration) var(--text-ease) backwards;
     animation-delay: calc(60ms + var(--line-index, 0) * var(--text-line-step));
   }
-  [data-text="body"][data-entered] {
+  [data-text="heading-copy"][data-entered] {
     animation: text-body-arrive .65s var(--text-ease) var(--text-delay, 180ms) backwards;
   }
   [data-text="eyebrow"][data-entered] {
@@ -101,4 +100,25 @@
 @keyframes component-side-arrive {
   from { transform: translateX(var(--component-offset, 32px)); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
+}
+
+/* Wait for the card entrance, then type the heading and supporting copy in order.
+   Invisible characters retain their space; no timers or repeated React renders. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-motion="note"][data-entered] .typewriter-character {
+    animation: typewriter-character 1ms steps(1, end) backwards;
+    animation-delay: calc(650ms + var(--type-index) * 22ms);
+  }
+}
+@keyframes typewriter-character {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Supporting copy types in place, without the previous slide/fade on its container. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-typewriter="viewport"][data-entered] .typewriter-character {
+    animation: typewriter-character 1ms steps(1, end) backwards;
+    animation-delay: calc(120ms + var(--type-index) * var(--type-step, 22ms));
+  }
 }
