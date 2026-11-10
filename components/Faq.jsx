@@ -1,6 +1,7 @@
 'use client';
 
 import RevealLine from './RevealLine';
+import SectionIllustration from './SectionIllustration';
 
 import { useState } from 'react';
 const styles = {
@@ -54,6 +55,7 @@ export default function Faq() {
           <p data-text="eyebrow" className={styles.eyebrow}><span aria-hidden="true">06 /</span> The details</p>
           <h2 data-text="heading" id="faq-title" className={styles.title}><RevealLine>Before we</RevealLine><RevealLine index={1}><span data-emphasis>get started.</span></RevealLine></h2>
           <p className={styles.description}>A little more about the process,<br className={styles.desktopBreak} /> the packages, and working with me.</p>
+          <SectionIllustration variant="conversation" className="mt-6 w-[112px] -rotate-6 max-[760px]:w-20" />
           <div className={styles.contact}>
             <p className="font-editorial">Something else on your mind?</p>
             <a href="mailto:theparkercollective.co@gmail.com">

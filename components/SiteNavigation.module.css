@@ -13,7 +13,7 @@
 .triggerLabel { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .bars { display: grid; gap: 7px; width: 24px; }
 .bars span { display: block; width: 24px; height: 1px; background: currentColor; }
-.trigger:hover { color: var(--color-brand-accent); }
+@media (hover: hover) { .trigger:hover { opacity: .95; } }
 
 .dialog {
   position: fixed;
@@ -82,8 +82,8 @@
 .dialog[open] .arrow { animation: part-arrive .42s var(--menu-ease) var(--row-delay) both; }
 .trigger, .brand, .inquire, .close { transition: color .2s, background-color .2s, opacity .2s, transform .25s; }
 .bars span { transition: transform .25s; }
-.trigger:hover .bars span:first-child { transform: translateX(-3px); }
-.trigger:hover .bars span:last-child { transform: translateX(3px); }
+
+
 .brand:hover { opacity: .7; }
 .inquire:hover { transform: translateY(-2px); }
 .close:hover { transform: rotate(90deg); }

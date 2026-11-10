@@ -1,6 +1,7 @@
 'use client';
 
 import RevealLine from './RevealLine';
+import SectionIllustration from './SectionIllustration';
 import TypewriterText from './TypewriterText';
 
 import { useRef, useState } from 'react';
@@ -23,7 +24,7 @@ const styles = {
   fields: 'mt-8 grid grid-cols-2 gap-6 max-[480px]:grid-cols-1 max-[480px]:gap-6 [&_label]:flex [&_label]:flex-col [&_label]:gap-2.5 [&_label]:text-[11px] [&_label]:leading-[1.5] [&_label]:font-semibold [&_:is(input,select,textarea)]:min-w-0 [&_:is(input,select,textarea)]:w-full [&_:is(input,select,textarea)]:rounded-none [&_:is(input,select,textarea)]:border-0 [&_:is(input,select,textarea)]:border-b [&_:is(input,select,textarea)]:border-[#a4ab98] [&_:is(input,select,textarea)]:bg-transparent [&_:is(input,select,textarea)]:py-2.5 [&_:is(input,select,textarea)]:text-sm [&_:is(input,select,textarea)]:leading-[1.5] [&_:is(input,select,textarea)]:font-normal [&_:is(input,select,textarea)]:text-ink [&_input::placeholder]:text-[#6d7363] [&_textarea::placeholder]:text-[#6d7363] [&_textarea]:min-h-[110px] [&_textarea]:max-h-[320px] [&_textarea]:resize-y [&_select]:min-h-11 [&_option]:bg-white [&_option]:text-ink [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-[5px] [&_:focus-visible]:outline-olive max-[480px]:[&_:is(input,select,textarea)]:text-base',
   full: 'col-span-full',
   deliveryNote: 'font-editorial mt-[25px] text-[11px] leading-[1.5] text-[#5a6050]',
-  submit: 'mx-auto mt-3.5 flex min-h-[54px] w-3/5 cursor-pointer items-center justify-center gap-2 bg-brand-accent px-5 py-4 text-[11px] font-bold tracking-[.04em] text-ink uppercase transition-colors hover:bg-[#d5ed75] max-[760px]:px-3 max-[760px]:text-center max-[480px]:[&>span]:hidden focus-visible:outline-ink motion-reduce:transition-none [&>span]:text-2xl [&>span]:leading-none',
+  submit: 'mx-auto mt-3.5 flex min-h-[54px] w-[220px] max-w-full max-[760px]:w-3/5 cursor-pointer items-center justify-center gap-2 bg-brand-accent px-5 py-4 text-[11px] font-bold tracking-[.04em] text-ink uppercase transition-colors hover:bg-[#d5ed75] max-[760px]:px-3 max-[760px]:text-center max-[480px]:[&>span]:hidden focus-visible:outline-ink motion-reduce:transition-none [&>span]:text-2xl [&>span]:leading-none',
   status: 'font-editorial mt-[18px] text-xs leading-[1.6] wrap-anywhere [&_a]:underline',
 };
 
@@ -57,7 +58,10 @@ export default function Inquiry() {
       <div className={styles.overlay} />
       <div className={styles.inner}>
         <div data-motion="inquiry" className={styles.intro}>
-          <p data-text="eyebrow" className={styles.eyebrow}>07 / Work with me</p>
+          <div className="mb-6 flex items-center gap-5">
+            <SectionIllustration variant="envelope" className="w-[84px] -rotate-6 max-[760px]:w-16" />
+            <p data-text="eyebrow" className="text-[10px] tracking-[.16em] text-brand-accent uppercase">07 / Work with me</p>
+          </div>
           <h2 data-text="heading" id="inquiry-title"><RevealLine>Let’s talk</RevealLine><RevealLine index={1}>about your</RevealLine><RevealLine index={2}><span data-emphasis>socials.</span></RevealLine></h2>
           <p className={styles.description}><TypewriterText>Tell me what you do and where you need support. We’ll start with your goals, talk through your options, and find the right way to work together.</TypewriterText></p>
           <a className={styles.email} href="mailto:theparkercollective.co@gmail.com">theparkercollective.co@gmail.com <span aria-hidden="true">↗</span></a>
