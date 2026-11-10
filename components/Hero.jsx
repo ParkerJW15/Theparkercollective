@@ -81,7 +81,7 @@ export default function Hero() {
             </TypewriterText></p>
             <a
               href={contact}
-              className="group mt-8 inline-flex min-h-14 items-center justify-between gap-9 bg-brand-accent px-6 text-xs font-bold text-black transition-colors hover:bg-white focus-visible:outline-offset-[6px] max-[760px]:mx-auto max-[760px]:flex max-[760px]:w-1/2 max-[760px]:max-w-[240px] max-[760px]:justify-center max-[760px]:gap-2 max-[760px]:px-3 max-[760px]:py-3 max-[760px]:text-center max-[760px]:[&_svg]:hidden"
+              className="group mt-8 inline-flex min-h-14 items-center justify-between gap-9 bg-brand-accent px-6 text-xs font-bold text-black transition-colors hover:bg-white focus-visible:outline-offset-[6px] max-[760px]:mx-auto max-[760px]:flex max-[760px]:w-3/5 max-[760px]:max-w-[280px] max-[760px]:justify-center max-[760px]:gap-2 max-[760px]:px-3 max-[760px]:py-3 max-[760px]:text-center max-[760px]:[&_svg]:hidden"
             >
               LET’S TALK ABOUT YOUR SOCIALS
               <Arrow className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
