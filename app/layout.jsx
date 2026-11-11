@@ -2,6 +2,10 @@ import './globals.css';
 import './section-motion.css';
 
 export const metadata = {
+  icons: {
+    icon: '/images/brand/parker-collective-icon.png',
+    apple: '/images/brand/parker-collective-apple-icon.png',
+  },
   title: 'The Parker Collective | Louisville Social Media Management',
   description: 'Social media management, content creation, and strategy for Louisville businesses. Explore The Parker Collective’s packages and work with Parker Wheatley.',
   // Keep the unfinished setup out of search results. Remove before launch.

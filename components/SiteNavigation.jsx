@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import useOutsideClick from '@/hooks/useOutsideClick';
 import styles from './SiteNavigation.module.css';
@@ -141,7 +142,7 @@ export default function SiteNavigation() {
         <div ref={panel} className={styles.panel} onAnimationEnd={event => { if (event.target === event.currentTarget && closingRef.current) finishClose(); }}>
           <div className={styles.header}>
             <a href="#main" className={styles.brand} aria-label="The Parker Collective home" onClickCapture={handleNavigate}>
-              <span>the parker</span><span>collective <span className={styles.brandMark} aria-hidden="true">✳</span></span>
+              <Image src="/images/brand/parker-collective-logo-stacked-dark.webp" alt="The Parker Collective" width={740} height={418} sizes="(max-width: 640px) 112px, 140px" className="block h-auto w-[140px] max-[640px]:w-[112px]" />
             </a>
             <div className={styles.actions}>
               <a href="#inquiry" className={styles.inquire} onClickCapture={handleNavigate}>Let’s talk <span aria-hidden="true">↗</span></a>

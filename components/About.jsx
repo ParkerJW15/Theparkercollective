@@ -16,7 +16,7 @@ const styles = {
   photoCaption: 'absolute top-[52%] -left-[7px] rotate-180 font-editorial text-[23px] whitespace-nowrap text-olive italic [writing-mode:vertical-rl] max-[1000px]:-left-3 max-[1000px]:text-xl max-[760px]:left-0',
   eyebrow: 'mb-6 flex items-center gap-[18px] text-[10px] font-semibold tracking-[.18em] text-olive uppercase [&>span]:text-[#686c5f] max-[760px]:mb-6 max-[760px]:gap-3.5 max-[760px]:text-[9px]',
   headingRow: 'mb-8 flex items-center justify-between gap-[clamp(12px,2vw,24px)]',
-  logo: 'relative aspect-[3/5] w-[clamp(44px,8vw,104px)] shrink-0 rotate-12 overflow-hidden',
+  logo: 'w-[clamp(64px,8vw,104px)] shrink-0 rotate-12',
   title: 'min-w-0 text-[clamp(54px,5.4vw,78px)] leading-[.95] font-bold tracking-[-.065em] uppercase [&_[data-emphasis]]:text-ink [&_[data-emphasis]]:shadow-[inset_0_-.16em_0_#e8ff8c] max-[1000px]:text-[56px] max-[760px]:text-[clamp(54px,14vw,72px)]',
   intro: 'font-editorial mb-6 text-xl leading-[1.45] max-[1000px]:text-lg',
   body: 'font-editorial text-[15px] leading-[1.8] text-muted [&_p+p]:mt-5 max-[1000px]:text-sm max-[760px]:text-[15px]',
@@ -65,7 +65,7 @@ export default function About() {
           <div className={styles.headingRow}>
             <h2 data-text="heading" id="about-title" className={styles.title}><RevealLine>Hey, I’m</RevealLine><RevealLine index={1}><span data-emphasis>Parker.</span></RevealLine></h2>
             <div className={styles.logo} aria-hidden="true">
-              <Image src="/images/brand/parker-collective-logo-transparent.png" alt="" width={2000} height={2000} sizes="520px" className="absolute top-1/2 left-1/2 h-auto w-[500%] max-w-none -translate-x-1/2 -translate-y-[47.75%]" />
+              <Image src="/images/brand/parker-collective-monogram-dark.webp" alt="" width={514} height={452} sizes="(max-width: 800px) 64px, 104px" className="block h-auto w-full" />
             </div>
           </div>
           <p className={styles.intro}><TypewriterText>Your social media partner,<br />from the first idea to the final post.</TypewriterText></p>

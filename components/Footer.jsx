@@ -15,7 +15,7 @@ export default function Footer() {
           </nav>
           <div className="grid grid-cols-[1fr_280px_1fr] items-center gap-10 py-9 max-[760px]:grid-cols-1 max-[760px]:gap-4 max-[760px]:text-center">
             <p data-text="heading-copy" className="max-w-[230px] text-[clamp(22px,2.6vw,36px)] leading-[1.12] font-bold tracking-[-.045em] max-[760px]:mx-auto max-[760px]:max-w-none">Good work.<br className="max-[760px]:hidden" /> Worth sharing.</p>
-            <a href="#main" aria-label="The Parker Collective — back to top" className="mx-auto block focus-visible:outline-ink"><Image src="/images/brand/parker-collective-logo-transparent.png" alt="The Parker Collective" width={280} height={280} sizes="(max-width: 760px) 210px, 280px" className="size-[280px] object-contain max-[760px]:size-[210px]" /></a>
+            <a href="#main" aria-label="The Parker Collective — back to top" className="mx-auto block focus-visible:outline-ink"><Image src="/images/brand/parker-collective-logo-stacked-dark.webp" alt="The Parker Collective" width={740} height={418} sizes="(max-width: 760px) 210px, 280px" className="size-[280px] object-contain max-[760px]:size-[210px]" /></a>
             <div className="justify-self-end text-right max-[760px]:justify-self-center max-[760px]:text-center">
               <p className="text-[10px] tracking-[.15em] uppercase">Louisville, Kentucky</p>
               <p className="font-editorial mt-3 text-sm leading-[1.7]">Social media management.<br />Content creation. Strategy.</p>

@@ -38,7 +38,7 @@
   height: 80dvh;
   padding: 24px var(--page-gutter);
   --menu-ease: cubic-bezier(.22, 1, .36, 1);
-  background: var(--color-paper);
+  background: #ffff;
   overflow-y: auto;
   overscroll-behavior: contain;
   box-shadow: 0 10px 30px rgb(0 0 0 / .12);
